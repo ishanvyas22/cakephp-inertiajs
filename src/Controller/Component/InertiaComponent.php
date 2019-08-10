@@ -168,9 +168,9 @@ class InertiaComponent extends Component
      */
     public function render($component, $props = [])
     {
-        $props = array_merge($this->sharedProps, $props);
+        $props = array_merge($this->_sharedProps, $props);
 
-        foreach ($this->sharedPropsCallbacks as $callback) {
+        foreach ($this->_sharedPropsCallbacks as $callback) {
             // $props = array_merge($props, App::call($callback));
             $props = array_merge($props, $callback());
         }
