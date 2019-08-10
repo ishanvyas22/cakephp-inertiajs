@@ -1,10 +1,12 @@
 <?php
 namespace InertiaCake\Controller\Component;
 
-use Cake\Controller\Component;
+use Closure;
 use Cake\Event\Event;
+use Cake\Utility\Hash;
 use Cake\Routing\Router;
 use Cake\View\ViewVarsTrait;
+use Cake\Controller\Component;
 
 /**
  * Inertial component
@@ -47,6 +49,27 @@ class InertiaComponent extends Component
     protected $_controller = null;
 
     /**
+     * Shared props array
+     *
+     * @var array
+     */
+    protected $_sharedProps = [];
+
+    /**
+     * Shared props closure to pass
+     *
+     * @var array|\Closure
+     */
+    protected $_sharedPropsCallbacks = [];
+
+    /**
+     * Inertia header version.
+     *
+     * @var null|string
+     */
+    protected $_version = null;
+
+    /**
      * Initialization hook.
      *
      * @param  array $config Configuration array.
@@ -65,6 +88,13 @@ class InertiaComponent extends Component
         if (isset($config['defaultTemplate'])) {
             $this->setDefaultTemplate($config['defaultTemplate']);
         }
+
+        if (isset($config['sharedProps']) && empty($config['sharedProps'])) {
+            $this->_sharedProps = array_merge(
+                $this->_sharedProps,
+                $config['sharedProps']
+            );
+        }
     }
 
     /**
@@ -78,6 +108,58 @@ class InertiaComponent extends Component
     }
 
     /**
+     * Share data with all your components.
+     *
+     * @param  string|\Closure $key Key for the data or closure.
+     * @param  string|null $value Value to set with the given key.
+     * @return void
+     */
+    public function share($key, $value = null)
+    {
+        if ($key instanceof Closure) {
+            $this->_sharedPropsCallbacks[] = $key;
+        } else {
+            $this->_sharedProps = Hash::insert($this->_sharedProps, $key, $value);
+        }
+    }
+
+    /**
+     * Returns shared data array.
+     *
+     * @param  null|string $key Get specific key value, return full array if null.
+     * @return array
+     */
+    public function getShared($key = null)
+    {
+        if ($key !== null) {
+            return Hash::get($this->_sharedProps, $key);
+        }
+
+        return $this->_sharedProps;
+    }
+
+    /**
+     * Set inertia header version
+     *
+     * @param  string $version Inertia version.
+     * @return void
+     */
+    public function version($version)
+    {
+        $this->_version = $version;
+    }
+
+    /**
+     * Returns inertia version.
+     *
+     * @return string
+     */
+    public function getVersion()
+    {
+        return $this->_version;
+    }
+
+    /**
      * Renders inertia response.
      *
      * @param  string $component Vue component to render.
@@ -86,6 +168,19 @@ class InertiaComponent extends Component
      */
     public function render($component, $props = [])
     {
+        $props = array_merge($this->sharedProps, $props);
+
+        foreach ($this->sharedPropsCallbacks as $callback) {
+            // $props = array_merge($props, App::call($callback));
+            $props = array_merge($props, $callback());
+        }
+
+        array_walk_recursive($props, function (&$prop) {
+            if ($prop instanceof Closure) {
+                $prop = $prop();
+            }
+        });
+
         $page = [
             'component' => $component,
             'props' => $props,
