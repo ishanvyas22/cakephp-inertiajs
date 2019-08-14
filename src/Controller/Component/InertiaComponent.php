@@ -168,6 +168,15 @@ class InertiaComponent extends Component
      */
     public function render($component, $props = [])
     {
+        $only = [];
+
+        if ($this->_serverRequest->hasHeader('X-Inertia-Partial-Data')) {
+            $only = array_filter(explode(
+                ',',
+                $this->_serverRequest->getHeader('X-Inertia-Partial-Data')
+            ));
+        }
+
         $props = array_merge($this->_sharedProps, $props);
 
         foreach ($this->_sharedPropsCallbacks as $callback) {
@@ -180,6 +189,10 @@ class InertiaComponent extends Component
                 $prop = $prop();
             }
         });
+
+        if ($only && $this->_serverRequest->getHeader('X-Inertia-Partial-Component') === $component) {
+            $props = array_intersect_key($props, array_flip((array)$only));
+        }
 
         $page = [
             'component' => $component,
