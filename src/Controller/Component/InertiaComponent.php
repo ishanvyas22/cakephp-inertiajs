@@ -1,12 +1,12 @@
 <?php
 namespace InertiaCake\Controller\Component;
 
-use Closure;
-use Cake\Event\Event;
-use Cake\Utility\Hash;
-use Cake\Routing\Router;
-use Cake\View\ViewVarsTrait;
 use Cake\Controller\Component;
+use Cake\Event\Event;
+use Cake\Routing\Router;
+use Cake\Utility\Hash;
+use Cake\View\ViewVarsTrait;
+use Closure;
 
 /**
  * Inertial component
