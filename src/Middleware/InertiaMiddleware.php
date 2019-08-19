@@ -2,6 +2,8 @@
 
 namespace InertiaCake\Middleware;
 
+use Cake\Http\Response;
+
 class InertiaMiddleware
 {
     /**
@@ -30,9 +32,12 @@ class InertiaMiddleware
         //     return Response::make('', 409, ['X-Inertia-Location' => $request->fullUrl()]);
         // }
 
-        // if ($response instanceof Redirect && $response->getStatusCode() === 302 && in_array($request->method(), ['PUT', 'PATCH', 'DELETE'])) {
-        //     $response->setStatusCode(303);
-        // }
+        if ($response instanceof Response
+            && $response->getStatusCode() === 302
+            && in_array($request->getMethod(), ['PUT', 'PATCH', 'DELETE'])
+        ) {
+            $response->withStatus(303);
+        }
 
         return $response;
     }

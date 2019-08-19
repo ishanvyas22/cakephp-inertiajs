@@ -200,6 +200,10 @@ class InertiaComponent extends Component
             'url' => $this->getCurrentUri()
         ];
 
+        if ($this->_serverRequest->getMethod() === 'POST') {
+            unset($page['url']);
+        }
+
         if ($this->_serverRequest->hasHeader('X-Inertia')) {
             return $this->inertiaResponse($page);
         }
