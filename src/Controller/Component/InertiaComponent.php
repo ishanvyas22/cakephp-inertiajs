@@ -7,6 +7,7 @@ use Cake\Routing\Router;
 use Cake\Utility\Hash;
 use Cake\View\ViewVarsTrait;
 use Closure;
+use InertiaCake\Utility\Message;
 
 /**
  * Inertial component
@@ -166,7 +167,7 @@ class InertiaComponent extends Component
      * @param  array $props Vue props to pass.
      * @return \Cake\Http\Response A response
      */
-    public function render($component, $props = [])
+    public function render($component, $props = [], $statusCode = Message::STATUS_OK)
     {
         $only = [];
 
@@ -200,12 +201,12 @@ class InertiaComponent extends Component
             'url' => $this->getCurrentUri()
         ];
 
-        if ($this->_serverRequest->getMethod() === 'POST') {
+        if ($statusCode !== Message::STATUS_OK) {
             unset($page['url']);
         }
 
         if ($this->_serverRequest->hasHeader('X-Inertia')) {
-            return $this->inertiaResponse($page);
+            return $this->inertiaResponse($page, $statusCode);
         }
 
         $this->_controller->set(compact('page'));
@@ -227,14 +228,14 @@ class InertiaComponent extends Component
      * @param  array $page Page response to set.
      * @return \Cake\Http\Response
      */
-    private function inertiaResponse($page)
+    private function inertiaResponse($page, $statusCode)
     {
         foreach ($this->_config['headers'] as $header => $value) {
             $this->_serverResponse = $this->_serverResponse->withHeader($header, $value);
         }
 
         return $this->_serverResponse
-            ->withStatus(200)
+            ->withStatus($statusCode)
             ->withType('application/json')
             ->withStringBody(json_encode($page));
     }

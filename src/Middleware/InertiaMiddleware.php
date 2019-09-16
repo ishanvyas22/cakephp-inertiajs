@@ -2,6 +2,7 @@
 
 namespace InertiaCake\Middleware;
 
+use InertiaCake\Utility\Message;
 use Cake\Http\Response;
 
 class InertiaMiddleware
@@ -29,14 +30,14 @@ class InertiaMiddleware
         //         $request->getSession()->reflash();
         //     }
 
-        //     return Response::make('', 409, ['X-Inertia-Location' => $request->fullUrl()]);
+        //     return Response::make('', Message::STATUS_CONFLICT, ['X-Inertia-Location' => $request->fullUrl()]);
         // }
 
         if ($response instanceof Response
-            && $response->getStatusCode() === 302
-            && in_array($request->getMethod(), ['PUT', 'PATCH', 'DELETE'])
+            && $response->getStatusCode() === Message::STATUS_FOUND
+            && in_array($request->getMethod(), [Message::METHOD_PUT, Message::METHOD_PATCH, Message::METHOD_DELETE])
         ) {
-            $response->withStatus(303);
+            $response->withStatus(Message::STATUS_SEE_OTHER);
         }
 
         return $response;
