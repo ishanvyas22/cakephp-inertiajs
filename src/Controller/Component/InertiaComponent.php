@@ -163,8 +163,9 @@ class InertiaComponent extends Component
     /**
      * Renders inertia response.
      *
-     * @param  string $component Vue component to render.
-     * @param  array $props Vue props to pass.
+     * @param string $component Vue component to render.
+     * @param array $props Vue props to pass.
+     * @param int $statusCode Status code.
      * @return \Cake\Http\Response A response
      */
     public function render($component, $props = [], $statusCode = Message::STATUS_OK)
