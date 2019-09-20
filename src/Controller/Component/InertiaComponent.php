@@ -214,6 +214,40 @@ class InertiaComponent extends Component
     }
 
     /**
+     * Returns flash data.
+     *
+     * @param string $key Flash key.
+     * @return array|null
+     * @throws UnexpectedValueException
+     */
+    public function getFlashData($key = 'flash')
+    {
+        $session = $this->_serverRequest->getSession();
+        $flashData = [];
+
+        if (!$session->check("Flash.$key")) {
+            return null;
+        }
+
+        $flash = $session->read("Flash.$key");
+
+        if (!is_array($flash)) {
+            throw new UnexpectedValueException(sprintf(
+                'Value for flash setting key "%s" must be an array.',
+                $key
+            ));
+        }
+
+        $session->delete("Flash.$key");
+
+        foreach ($flash as $message) {
+            $flashData = $message;
+        }
+
+        return $flashData;
+    }
+
+    /**
      * Get current absolute url.
      *
      * @return string
