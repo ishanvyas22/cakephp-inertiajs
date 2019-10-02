@@ -14,7 +14,7 @@ composer require ishanvyas22/inertia-cakephp
 bin/cake plugin load InertiaCake
 ```
 
-3. Copy ``package.json`` and ``webpack.mix.js`` into root of your project then run below commands
+3. Copy ``package.json`` and ``webpack.mix.js`` into root of your project then run below command
 
 ```bash
 npm install
