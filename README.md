@@ -47,26 +47,7 @@ Into ``inertia.ctp`` file:
 ```
 echo $this->Inertia->make($page, 'app');
 ```
-
-3. Additionally you can share data to use into your client side files (Optional)
-
-```
-$this->Inertia->share('app.name', 'InertiaCake');
-
-$this->Inertia->share('auth.user', function () {
-    $authUser = null;
-
-    if ($this->Authentication->getIdentity()) {
-        $authUser = $this->Authentication->getIdentity();
-    }
-
-    return $authUser;
-});
-
-$this->Inertia->share('app.flash', function () {
-    return $this->Inertia->getFlashData();
-});
-```
+Behind the scene it will create a ``div`` element with ``id="app"`` attribute. You can change ``app`` id according to your convenience.
 
 ## Creating responses
 To make inertia response you can simply call ``render()`` function of ``InertiaComponent``:
@@ -91,3 +72,35 @@ class UsersController extends AppController
 ```
 
 By default if you have copied the ``webpack.mix.js`` file from plugin, it will render ``Index.vue`` file into ``webroot/js/Pages/Users`` directory.
+
+## Sharing data
+
+Often you want to use some data across your application, for example accessing current logged in user's name or flash messages. You can easily share these type data using ``share()`` function
+
+Set application name:
+
+```
+$this->Inertia->share('app.name', 'InertiaCake');
+```
+
+Set currently logged in user's details:
+
+```
+$this->Inertia->share('auth.user', function () {
+    $authUser = null;
+
+    if ($this->Authentication->getIdentity()) {
+        $authUser = $this->Authentication->getIdentity();
+    }
+
+    return $authUser;
+});
+```
+
+Set flash messages:
+
+```
+$this->Inertia->share('app.flash', function () {
+    return $this->Inertia->getFlashData();
+});
+```
