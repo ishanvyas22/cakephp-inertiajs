@@ -6,7 +6,6 @@ mix
   .webpackConfig({
     output: {
       path: path.resolve(__dirname, 'webroot'),
-      publicPath: '/inertia_cake/',
       chunkFilename: 'js/dist/[name].js?id=[chunkhash]'
     },
     resolve: {
@@ -19,5 +18,4 @@ mix
   .babelConfig({
     plugins: ['@babel/plugin-syntax-dynamic-import'],
   })
-  .version()
   .sourceMaps();
