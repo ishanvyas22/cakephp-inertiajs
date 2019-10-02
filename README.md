@@ -14,7 +14,7 @@ composer require ishanvyas22/inertia-cakephp
 bin/cake plugin load InertiaCake
 ```
 
-3. Copy ``package.json`` and ``webpack.mix.js`` into root of your project then run below command
+3. Copy ``package.json`` and ``webpack.mix.js`` into root of your project then run below command (Only if you want Vue as client side adapter) for more frontend adapters please visit https://inertiajs.com/client-side-setup
 
 ```bash
 npm install
@@ -67,3 +67,27 @@ $this->Inertia->share('app.flash', function () {
     return $this->Inertia->getFlashData();
 });
 ```
+
+## Creating responses
+To make inertia response you can simply call ``render()`` function of ``InertiaComponent``:
+
+```
+<?php
+
+namespace App\Controller;
+
+class UsersController extends AppController
+{
+    public function index()
+    {
+        $component = 'Users/Index';
+        $props = [
+            'users' => $this->Users->find()->toArray()
+        ];
+
+        return $this->Inertia->render($component, $props);
+    }
+}
+```
+
+By default if you have copied the ``webpack.mix.js`` file from plugin, it will render ``Index.vue`` file into ``webroot/js/Pages/Users`` directory.
