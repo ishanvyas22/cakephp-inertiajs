@@ -1,6 +1,6 @@
 {
-    "name": "ishanvyas22/inertia-cake",
-    "description": "InertiaCake plugin for CakePHP",
+    "name": "ishanvyas22/inertia-cakephp",
+    "description": "The CakePHP adapter for Inertia.js.",
     "type": "cakephp-plugin",
     "license": "MIT",
     "require": {
