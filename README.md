@@ -75,7 +75,7 @@ By default if you have copied the ``webpack.mix.js`` file from plugin, it will r
 
 ## Sharing data
 
-Often you want to use some data across your application, for example accessing current logged in user's name or flash messages. You can easily share these type data using ``share()`` function
+Often you want to use some data across your application, for example accessing current logged in user's name or flash messages. You can easily share these type data using ``share()`` function.
 
 Set application name:
 
@@ -104,3 +104,6 @@ $this->Inertia->share('app.flash', function () {
     return $this->Inertia->getFlashData();
 });
 ```
+
+## Issues
+Feel free to submit issues and enhancement requests.
