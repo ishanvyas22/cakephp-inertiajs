@@ -5,16 +5,24 @@
 1. Get project into your system via [composer](https://getcomposer.org)
 
     ```bash
-    composer require ishanvyas22/inertia-cakephp
+    composer require ishanvyas22/cakephp-inertiajs
     ```
 
 2. Load plugin into your application
 
     ```bash
-    bin/cake plugin load InertiaCake
+    bin/cake plugin load Inertia
     ```
 
-3. Copy ``package.json`` and ``webpack.mix.js`` into root of your project then run below command (Only if you want Vue as client side adapter) for more frontend adapters please visit https://inertiajs.com/client-side-setup
+3. Generate inertia scaffolding
+
+    ```bash
+    bin/cake asset_mix generate inertia-vue
+    ```
+
+    **Note:** Above command will generate basic scaffolding to use inertia with Vue.js. For more frontend adapters please visit https://inertiajs.com/client-side-setup.
+
+3. Install dependencies
 
     ```bash
     npm install
