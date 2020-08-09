@@ -1,5 +1,5 @@
 <?php
-namespace InertiaCake\View\Helper;
+namespace Inertia\View\Helper;
 
 use Cake\View\Helper;
 

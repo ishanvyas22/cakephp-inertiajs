@@ -1,5 +1,5 @@
 <?php
-namespace InertiaCake\Controller\Component;
+namespace Inertia\Controller\Component;
 
 use Cake\Controller\Component;
 use Cake\Event\Event;
@@ -7,7 +7,7 @@ use Cake\Routing\Router;
 use Cake\Utility\Hash;
 use Cake\View\ViewVarsTrait;
 use Closure;
-use InertiaCake\Utility\Message;
+use Inertia\Utility\Message;
 
 /**
  * Inertial component

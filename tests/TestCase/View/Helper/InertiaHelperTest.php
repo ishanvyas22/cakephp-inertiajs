@@ -1,12 +1,12 @@
 <?php
-namespace InertiaCake\Test\TestCase\View\Helper;
+namespace Inertia\Test\TestCase\View\Helper;
 
 use Cake\TestSuite\TestCase;
 use Cake\View\View;
-use InertiaCake\View\Helper\InertiaHelper;
+use Inertia\View\Helper\InertiaHelper;
 
 /**
- * InertiaCake\View\Helper\InertiaHelper Test Case
+ * Inertia\View\Helper\InertiaHelper Test Case
  */
 class InertiaHelperTest extends TestCase
 {
@@ -14,7 +14,7 @@ class InertiaHelperTest extends TestCase
     /**
      * Test subject
      *
-     * @var \InertiaCake\View\Helper\InertiaHelper
+     * @var \Inertia\View\Helper\InertiaHelper
      */
     public $Inertia;
 

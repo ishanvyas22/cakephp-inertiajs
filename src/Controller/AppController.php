@@ -1,6 +1,6 @@
 <?php
 
-namespace InertiaCake\Controller;
+namespace Inertia\Controller;
 
 use Cake\Controller\Controller;
 

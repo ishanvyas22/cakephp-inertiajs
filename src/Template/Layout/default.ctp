@@ -11,7 +11,7 @@
 
     <?= $this->Html->css('base.css') ?>
 
-    <?= $this->Html->script('InertiaCake.dist/app.js', ['type' => 'module']) ?>
+    <?= $this->Html->script('Inertia.dist/app.js', ['type' => 'module']) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>

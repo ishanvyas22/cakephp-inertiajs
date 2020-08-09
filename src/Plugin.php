@@ -1,12 +1,12 @@
 <?php
 
-namespace InertiaCake;
+namespace Inertia;
 
 use Cake\Core\BasePlugin;
-use InertiaCake\Middleware\InertiaMiddleware;
+use Inertia\Middleware\InertiaMiddleware;
 
 /**
- * Plugin for InertiaCake
+ * Plugin for Inertia
  */
 class Plugin extends BasePlugin
 {

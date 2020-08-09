@@ -1,12 +1,12 @@
 <?php
-namespace InertiaCake\Test\TestCase\Controller\Component;
+namespace Inertia\Test\TestCase\Controller\Component;
 
 use Cake\Controller\ComponentRegistry;
 use Cake\TestSuite\TestCase;
-use InertiaCake\Controller\Component\RenderComponent;
+use Inertia\Controller\Component\RenderComponent;
 
 /**
- * InertiaCake\Controller\Component\RenderComponent Test Case
+ * Inertia\Controller\Component\RenderComponent Test Case
  */
 class RenderComponentTest extends TestCase
 {
@@ -14,7 +14,7 @@ class RenderComponentTest extends TestCase
     /**
      * Test subject
      *
-     * @var \InertiaCake\Controller\Component\RenderComponent
+     * @var \Inertia\Controller\Component\RenderComponent
      */
     public $Render;
 

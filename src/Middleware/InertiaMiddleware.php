@@ -1,8 +1,8 @@
 <?php
 
-namespace InertiaCake\Middleware;
+namespace Inertia\Middleware;
 
-use InertiaCake\Utility\Message;
+use Inertia\Utility\Message;
 use Cake\Http\Response;
 
 class InertiaMiddleware

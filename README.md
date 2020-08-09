@@ -37,7 +37,7 @@
     {
         parent::initialize();
 
-        $this->loadComponent('InertiaCake.Inertia', [
+        $this->loadComponent('Inertia.Inertia', [
             'request' => $this->getRequest(),
             'response' => $this->getResponse(),
             'defaultTemplate' => '/Main/inertia'
@@ -49,7 +49,7 @@
 
     First load Inertia helper into your ``AppView.php`` file:
     ```
-    $this->loadHelper('InertiaCake.Inertia');
+    $this->loadHelper('Inertia.Inertia');
     ```
 
     Into ``inertia.ctp`` file:
@@ -90,7 +90,7 @@ Often you want to use some data across your application, for example accessing c
 Set application name:
 
 ```
-$this->Inertia->share('app.name', 'InertiaCake');
+$this->Inertia->share('app.name', 'Inertia');
 ```
 
 Set currently logged in user's details:
