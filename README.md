@@ -20,7 +20,7 @@
     bin/cake asset_mix generate inertia-vue
     ```
 
-    **Note:** Above command will generate basic scaffolding to use inertia with Vue.js. For more frontend adapters please visit https://inertiajs.com/client-side-setup.
+    **Note:** Above command will generate basic scaffolding to use inertia with Vue.js. For more front-end adapters please visit https://inertiajs.com/client-side-setup.
 
 3. Install dependencies
 
@@ -30,58 +30,50 @@
 
 ## Setup
 
-1. Load Inertia component into your application, provide default template file path in `defaultTemplate` key into `AppController.php`
+1. Just extend `Inertia\Controller\InertiaController` to your controller in which you want to use inertia.
 
-    ```
-    public function initialize()
-    {
-        parent::initialize();
+Since `InertiaController` extends your `App\Controller\AppController`, all the hooks like `initialize`, `beforeFilter`, etc. will work as it is.
 
-        $this->loadComponent('Inertia.Inertia', [
-            'request' => $this->getRequest(),
-            'response' => $this->getResponse(),
-            'defaultTemplate' => '/Main/inertia'
-        ]);
-    }
-    ```
-
-2. To setup root template, create new template file that you've provided into previous step. In our case create ``src/Template/Main/inertia.ctp``
-
+2. By default, it uses plugins `Inertia/app.ctp` file as root template, but you can customize it according your needs via `InertiaHelper`:
     First load Inertia helper into your ``AppView.php`` file:
     ```
     $this->loadHelper('Inertia.Inertia');
     ```
 
-    Into ``inertia.ctp`` file:
+    In your template file add below lines:
     ```
-    echo $this->Inertia->make($page, 'app');
+    echo $this->Inertia->make($data, ['id' => 'app']);
     ```
 
-    Behind the scene it will create a ``div`` element with ``id="app"`` attribute. You can change ``app`` id according to your convenience.
+    Behind the scene it will create a `div` element with `id="app"` attribute. You can change ``app`` id according to your convenience.
 
 ## Creating responses
-To make inertia response you can simply call ``render()`` function of ``InertiaComponent``:
 
-```
+To create an inertia response you just have to set the values that you need to pass to your view/component, same as you do with ctp files:
+
+```php
 <?php
 
 namespace App\Controller;
 
-class UsersController extends AppController
+use Inertia\Controller\InertiaController;
+
+class UsersController extends InertiaController
 {
     public function index()
     {
-        $component = 'Users/Index';
-        $props = [
-            'users' => $this->Users->find()->toArray()
-        ];
-
-        return $this->Inertia->render($component, $props);
+        $this->set('users', $this->Users->find()->toArray());
     }
 }
 ```
 
-By default if you have copied the ``webpack.mix.js`` file from plugin, it will render ``Index.vue`` file into ``webroot/js/Pages/Users`` directory.
+It follows same convention as CakePHP, so above code will render `Index.vue` file inside `Users` directory.
+
+If you want to render any other component just set component view var and it will render it accordingly. For example:
+
+    ```php
+    $this->set('component', 'Users/Listing');
+    ```
 
 ## Sharing data
 
