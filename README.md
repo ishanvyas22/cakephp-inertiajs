@@ -30,7 +30,7 @@
 
 ## Setup
 
-1. Load Inertia component into your application, provide default template file path in ``defaultTemplate`` key into ``AppController.php``
+1. Load Inertia component into your application, provide default template file path in `defaultTemplate` key into `AppController.php`
 
     ```
     public function initialize()

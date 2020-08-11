@@ -17,21 +17,13 @@ class InertiaMiddleware
      */
     public function __invoke($request, $response, $next)
     {
-        // Calling $next() delegates control to the *next* middleware
-        // In your application's queue.
         $response = $next($request, $response);
 
         if (! $request->hasHeader('X-Inertia')) {
             return $response;
         }
 
-        // if ($request->getMethod() === 'GET' && $request->getHeader('X-Inertia-Version') !== Inertia::getVersion()) {
-        //     if ($request->getSession()) {
-        //         $request->getSession()->reflash();
-        //     }
-
-        //     return Response::make('', Message::STATUS_CONFLICT, ['X-Inertia-Location' => $request->fullUrl()]);
-        // }
+        $this->setupDetector($request);
 
         if ($response instanceof Response
             && $response->getStatusCode() === Message::STATUS_FOUND
@@ -41,5 +33,18 @@ class InertiaMiddleware
         }
 
         return $response;
+    }
+
+    /**
+     * Set `inertia` detector in the request to use it throughout the application.
+     *
+     * @param  \Cake\Http\ServerRequest $request The request.
+     * @return void
+     */
+    private function setupDetector($request)
+    {
+        $request->addDetector('inertia', function ($request) {
+            return $request->hasHeader('X-Inertia');
+        });
     }
 }
