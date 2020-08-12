@@ -34,6 +34,6 @@ class InertiaWebViewTest extends TestCase
 
         $result = $this->View->render();
 
-        $this->assertContains('Users\/Index', $result);
+        $this->assertContains(json_encode('Users/Index'), $result);
     }
 }
