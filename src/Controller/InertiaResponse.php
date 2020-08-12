@@ -2,19 +2,15 @@
 
 namespace Inertia\Controller;
 
-use App\Controller\AppController;
 use Cake\Event\Event;
-use Cake\Routing\Router;
 
-class InertiaController extends AppController
+trait InertiaResponse
 {
     /**
      * @inheritDoc
      */
     public function beforeRender(Event $event)
     {
-        parent::beforeRender($event);
-
         $this->setViewBuilderClass();
     }
 

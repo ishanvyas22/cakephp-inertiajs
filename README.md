@@ -49,17 +49,19 @@ Since `InertiaController` extends your `App\Controller\AppController`, all the h
 
 ## Creating responses
 
-To create an inertia response you just have to set the values that you need to pass to your view/component, same as you do with ctp files:
+To create an inertia response you just have to use `InertiaResponse` trait that ships with this plugin. This will handle all the heavy lifting that is needed render your view/component.
 
 ```php
 <?php
 
 namespace App\Controller;
 
-use Inertia\Controller\InertiaController;
+use Inertia\Controller\InertiaResponse;
 
-class UsersController extends InertiaController
+class UsersController extends AppController
 {
+    use InertiaResponse;
+
     public function index()
     {
         $this->set('users', $this->Users->find()->toArray());
@@ -67,13 +69,34 @@ class UsersController extends InertiaController
 }
 ```
 
-It follows same convention as CakePHP, so above code will render `Index.vue` file inside `Users` directory.
+As you can see in above response you just have to set the variables that you need in you view, same as you do with your CakePHP template files.
 
-If you want to render any other component just set component view var and it will render it accordingly. For example:
+It follows same convention as CakePHP, so above code will render `Index.vue` component inside `Users` directory. In case, you want to render any other component just set component view var and it will render it accordingly. For example:
 
-    ```php
-    $this->set('component', 'Users/Listing');
-    ```
+```php
+    public function index()
+    {
+        $this->set('users', $this->Users->find()->toArray());
+        $this->set('component', 'Users/Listing');
+    }
+```
+
+`InertiaResponse` trait uses `beforeRender` hook internally to handle the view specific logic. But there might be some scenario in that you have to use this hook to manipulate some things. Since if you will directly call `beforeRender` method in your controller, it will override whole behavior which is not what you want.
+
+To override `beforeRender` hook:
+```php
+    // Alias the trait's `beforeRender` method
+    use InertiaResponse {
+        beforeRender as protected inertiaBeforeRender;
+    }
+
+    public function beforeRender(Event $event)
+    {
+        static::inertiaBeforeRender($event);
+
+        // Do you customization here.
+    }
+```
 
 ## Sharing data
 
