@@ -23,6 +23,11 @@
         }
     },
     "scripts": {
+        "check": [
+            "@cs-check",
+            "@analyse",
+            "@test"
+        ],
         "cs-fix": "vendor/bin/phpcbf --extensions=php ./src ./tests",
         "cs-check": "vendor/bin/phpcs -p --extensions=php ./src ./tests",
         "analyse": "phpstan analyse --ansi --memory-limit=-1",
