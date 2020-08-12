@@ -1,4 +1,4 @@
-# Inertia.js CakePHP Adapter
+# CakePHP Adapter for Inertia.js
 
 ## Installation
 
