@@ -2,7 +2,8 @@ language: php
 
 branches:
   only:
-    - code-analysis
+    - master
+    - 1.x
 
 php:
   - 7.1
