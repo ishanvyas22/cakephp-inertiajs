@@ -31,7 +31,7 @@ class InertiaComponent extends Component
     /**
      * Server request.
      *
-     * @var null|\Cake\Http\Request
+     * @var null|\Cake\Http\ServerRequest
      */
     protected $_serverRequest = null;
 
