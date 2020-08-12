@@ -36,4 +36,16 @@ class InertiaWebViewTest extends TestCase
 
         $this->assertContains(json_encode('Users/Index'), $result);
     }
+
+    public function testRendersCurrentPageUrl()
+    {
+        $url = 'http://localhost/';
+        $this->View->set('component', 'Users/Index');
+        $this->View->set('url', 'http://localhost');
+        $this->View->set('user', ['id' => 1, 'name' => 'John Doe']);
+
+        $result = $this->View->render();
+
+        $this->assertContains(json_encode($url), $result);
+    }
 }
