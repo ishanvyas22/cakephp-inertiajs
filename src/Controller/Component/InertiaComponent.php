@@ -25,13 +25,13 @@ class InertiaComponent extends Component
         'headers' => [
             'Vary' => 'Accept',
             'X-Inertia' => 'true',
-        ]
+        ],
     ];
 
     /**
      * Server request.
      *
-     * @var null|\Cake\Http\Request
+     * @var null|\Cake\Http\ServerRequest
      */
     protected $_serverRequest = null;
 
@@ -199,7 +199,7 @@ class InertiaComponent extends Component
         $page = [
             'component' => $component,
             'props' => $props,
-            'url' => $this->getCurrentUri()
+            'url' => $this->getCurrentUri(),
         ];
 
         if ($statusCode !== Message::STATUS_OK) {
@@ -261,6 +261,7 @@ class InertiaComponent extends Component
      * Returns response including required inertia js headers.
      *
      * @param  array $page Page response to set.
+     * @param  string $statusCode Status code.
      * @return \Cake\Http\Response
      */
     private function inertiaResponse($page, $statusCode)

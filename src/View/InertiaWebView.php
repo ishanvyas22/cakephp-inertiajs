@@ -1,8 +1,8 @@
 <?php
 namespace Inertia\View;
 
-use Cake\View\View;
 use Cake\Routing\Router;
+use Cake\View\View;
 
 /**
  * Renders `Inertia./Inertia/app` view with provided view vars.

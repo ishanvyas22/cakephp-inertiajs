@@ -4,7 +4,7 @@ namespace Inertia\Controller;
 
 use Cake\Event\Event;
 
-trait InertiaResponse
+trait InertiaResponseTrait
 {
     /**
      * @inheritDoc

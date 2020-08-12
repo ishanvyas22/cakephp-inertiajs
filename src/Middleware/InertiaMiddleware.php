@@ -2,8 +2,8 @@
 
 namespace Inertia\Middleware;
 
-use Inertia\Utility\Message;
 use Cake\Http\Response;
+use Inertia\Utility\Message;
 
 class InertiaMiddleware
 {
@@ -25,7 +25,8 @@ class InertiaMiddleware
 
         $this->setupDetector($request);
 
-        if ($response instanceof Response
+        if (
+            $response instanceof Response
             && $response->getStatusCode() === Message::STATUS_FOUND
             && in_array($request->getMethod(), [Message::METHOD_PUT, Message::METHOD_PATCH, Message::METHOD_DELETE])
         ) {

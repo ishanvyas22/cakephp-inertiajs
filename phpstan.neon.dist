@@ -1,0 +1,11 @@
+parameters:
+    bootstrapFiles:
+        - vendor/cakephp/cakephp/tests/bootstrap.php
+    level: max
+    paths:
+        - src
+    excludes_analyse:
+        - src/Controller/Component/InertiaComponent.php
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    reportUnmatchedIgnoredErrors: true
