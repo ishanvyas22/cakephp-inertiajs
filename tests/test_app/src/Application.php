@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 namespace TestApp;
 
@@ -14,7 +13,7 @@ class Application extends BaseApplication
      * @param \Cake\Http\MiddlewareQueue $middlewareQueue The middleware queue to setup.
      * @return \Cake\Http\MiddlewareQueue The updated middleware queue.
      */
-    public function middleware($middlewareQueue): MiddlewareQueue
+    public function middleware($middlewareQueue)
     {
         return $middlewareQueue;
     }
