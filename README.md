@@ -30,11 +30,10 @@
 
 ## Setup
 
-1. Just extend `Inertia\Controller\InertiaController` to your controller in which you want to use inertia.
+1. Just add `Inertia\Controller\InertiaResponse` trait into your controller in which you want to use inertia. And it will automattically render the response according to the request.
 
-Since `InertiaController` extends your `App\Controller\AppController`, all the hooks like `initialize`, `beforeFilter`, etc. will work as it is.
+2. By default, it uses plugin's `Inertia/app.ctp` file as root template, but you can customize it according your needs via `InertiaHelper`:
 
-2. By default, it uses plugins `Inertia/app.ctp` file as root template, but you can customize it according your needs via `InertiaHelper`:
     First load Inertia helper into your ``AppView.php`` file:
     ```
     $this->loadHelper('Inertia.Inertia');
@@ -71,7 +70,7 @@ class UsersController extends AppController
 
 As you can see in above response you just have to set the variables that you need in you view, same as you do with your CakePHP template files.
 
-It follows same convention as CakePHP, so above code will render `Index.vue` component inside `Users` directory. In case, you want to render any other component just set component view var and it will render it accordingly. For example:
+It follows same convention as CakePHP, so above code will render `Index.vue` component inside `Users` directory. In case, you want to render any other component just set component view var and it will render it accordingly. For example, if you want to render `Listing.vue` file:
 
 ```php
     public function index()
@@ -81,7 +80,9 @@ It follows same convention as CakePHP, so above code will render `Index.vue` com
     }
 ```
 
-`InertiaResponse` trait uses `beforeRender` hook internally to handle the view specific logic. But there might be some scenario in that you have to use this hook to manipulate some things. Since if you will directly call `beforeRender` method in your controller, it will override whole behavior which is not what you want.
+#### Customize `beforeRender` hook
+
+`InertiaResponse` trait uses `beforeRender` hook internally to handle the view specific logic. But there might be some scenarios in which you want to use this hook to manipulate or customize some behavior. Since if you will directly call `beforeRender` method in your controller, it will override whole behavior which is not what you want.
 
 To override `beforeRender` hook:
 ```php
@@ -94,9 +95,11 @@ To override `beforeRender` hook:
     {
         static::inertiaBeforeRender($event);
 
-        // Do you customization here.
+        // Do your customization here.
     }
 ```
+
+**Note:** You must have to call `beforeRender` method of `InertiaResponse`, otherwise the inertia response won't work as expected.
 
 ## Sharing data
 
