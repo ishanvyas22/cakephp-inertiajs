@@ -261,6 +261,7 @@ class InertiaComponent extends Component
      * Returns response including required inertia js headers.
      *
      * @param  array $page Page response to set.
+     * @param  string $statusCode Status code.
      * @return \Cake\Http\Response
      */
     private function inertiaResponse($page, $statusCode)

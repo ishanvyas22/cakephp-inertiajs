@@ -2,14 +2,14 @@
 
 namespace Inertia\Test\TestCase\Controller;
 
-use Cake\TestSuite\TestCase;
-use Inertia\Controller\InertiaResponse;
 use Cake\TestSuite\IntegrationTestTrait;
+use Cake\TestSuite\TestCase;
+use Inertia\Controller\InertiaResponseTrait;
 
 class UsersControllerTest extends TestCase
 {
+    use InertiaResponseTrait;
     use IntegrationTestTrait;
-    use InertiaResponse;
 
     public function testItReturnsInertiaWebViewResponseWithDefaultConvention()
     {

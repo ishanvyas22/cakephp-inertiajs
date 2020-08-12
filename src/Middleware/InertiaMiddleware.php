@@ -2,8 +2,8 @@
 
 namespace Inertia\Middleware;
 
-use Inertia\Utility\Message;
 use Cake\Http\Response;
+use Inertia\Utility\Message;
 
 class InertiaMiddleware
 {

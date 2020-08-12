@@ -2,13 +2,13 @@
 
 namespace TestApp\Controller;
 
-use Cake\Event\Event;
 use Cake\Controller\Controller;
-use Inertia\Controller\InertiaResponse;
+use Cake\Event\Event;
+use Inertia\Controller\InertiaResponseTrait;
 
 class AppController extends Controller
 {
-    use InertiaResponse;
+    use InertiaResponseTrait;
 
     public function initialize()
     {
