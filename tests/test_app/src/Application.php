@@ -1,10 +1,10 @@
 <?php
-declare(strict_types=1);
 
 namespace TestApp;
 
 use Cake\Http\BaseApplication;
 use Cake\Http\MiddlewareQueue;
+use Cake\Routing\Middleware\RoutingMiddleware;
 
 class Application extends BaseApplication
 {
@@ -14,8 +14,8 @@ class Application extends BaseApplication
      * @param \Cake\Http\MiddlewareQueue $middlewareQueue The middleware queue to setup.
      * @return \Cake\Http\MiddlewareQueue The updated middleware queue.
      */
-    public function middleware($middlewareQueue): MiddlewareQueue
+    public function middleware($middlewareQueue)
     {
-        return $middlewareQueue;
+        return $middlewareQueue->add(new RoutingMiddleware($this));
     }
 }

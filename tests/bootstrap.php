@@ -1,9 +1,9 @@
 <?php
-declare(strict_types=1);
 
 use Cake\Cache\Cache;
-use Cake\Core\Configure;
 use Cake\Core\Plugin;
+use Cake\Core\Configure;
+use Cake\Cache\Engine\FileEngine;
 use Cake\Datasource\ConnectionManager;
 
 require_once __DIR__ . '/../vendor/autoload.php';
