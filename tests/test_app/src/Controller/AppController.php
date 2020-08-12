@@ -26,9 +26,9 @@ class AppController extends Controller
 
         // Share data throughout the application
         $this->set('app', [
-            'name' => 'InertiaDemo',
+            'name' => 'InertiaTestApp',
             'flash' => null,
-            'user' => function () {
+            'authUser' => function () {
                 $authUser = null;
 
                 if ($this->Authentication->getIdentity()) {
@@ -36,7 +36,7 @@ class AppController extends Controller
                 }
 
                 return $authUser;
-            }
+            },
         ]);
     }
 }
