@@ -5,9 +5,9 @@ use Cake\View\View;
 use Cake\Routing\Router;
 
 /**
- * Renders json string with given values set via controller.
+ * Renders `Inertia./Inertia/app` view with provided view vars.
  */
-class InertiaView extends View
+class InertiaWebView extends View
 {
     /**
      * @inheritDoc

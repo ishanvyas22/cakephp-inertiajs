@@ -11,16 +11,10 @@ class InertiaController extends AppController
     /**
      * @inheritDoc
      */
-    public function initialize()
-    {
-        parent::initialize();
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function beforeRender(Event $event)
     {
+        parent::beforeRender($event);
+
         $this->setViewBuilderClass();
     }
 
@@ -31,10 +25,11 @@ class InertiaController extends AppController
      */
     private function setViewBuilderClass()
     {
+        $viewClass = 'InertiaWeb';
         if ($this->getRequest()->is('inertia')) {
-            $this->viewBuilder()->setClassName('Json');
+            $viewClass = 'InertiaJson';
         }
 
-        $this->viewBuilder()->setClassName('Inertia.Inertia');
+        $this->viewBuilder()->setClassName("Inertia.{$viewClass}");
     }
 }
