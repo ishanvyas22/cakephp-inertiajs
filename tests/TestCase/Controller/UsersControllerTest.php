@@ -8,7 +8,8 @@ use Cake\TestSuite\IntegrationTestTrait;
 
 class UsersControllerTest extends TestCase
 {
-    use IntegrationTestTrait, InertiaResponse;
+    use IntegrationTestTrait;
+    use InertiaResponse;
 
     public function testItReturnsInertiaWebViewResponseWithDefaultConvention()
     {

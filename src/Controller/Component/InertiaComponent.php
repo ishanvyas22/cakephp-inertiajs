@@ -25,7 +25,7 @@ class InertiaComponent extends Component
         'headers' => [
             'Vary' => 'Accept',
             'X-Inertia' => 'true',
-        ]
+        ],
     ];
 
     /**
@@ -199,7 +199,7 @@ class InertiaComponent extends Component
         $page = [
             'component' => $component,
             'props' => $props,
-            'url' => $this->getCurrentUri()
+            'url' => $this->getCurrentUri(),
         ];
 
         if ($statusCode !== Message::STATUS_OK) {
