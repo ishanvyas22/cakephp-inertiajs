@@ -30,7 +30,7 @@
 
 ## Setup
 
-1. Just add `Inertia\Controller\InertiaResponseTrait` into your controller in which you want to use inertia. And it will automattically render the response according to the request.
+1. Just add `Inertia\Controller\InertiaResponseTrait` into your controller in which you want to use inertia. And it will automatically render the response according to the request.
 
 2. By default, it uses plugin's `Inertia/app.ctp` file as root template, but you can customize it according your needs via `InertiaHelper`:
 
