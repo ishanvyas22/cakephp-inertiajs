@@ -2,7 +2,7 @@
 
 ## Installation
 
-1. Get project into your system via [composer](https://getcomposer.org)
+1. Add this plugin to your application with [composer](https://getcomposer.org)
 
     ```bash
     composer require ishanvyas22/cakephp-inertiajs
