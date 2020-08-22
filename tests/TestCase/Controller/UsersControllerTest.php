@@ -33,4 +33,16 @@ class UsersControllerTest extends TestCase
         $this->assertTemplate('app');
         $this->assertResponseContains(json_encode('Custom/Component'));
     }
+
+    public function testItReturnsInertiaJsonViewResponseWhenRequestIsXInertia()
+    {
+        $this->configRequest([
+            'headers' => ['X-Inertia' => 'true']
+        ]);
+
+        $this->get('/users/index');
+
+        $this->assertResponseOk();
+        $this->assertContentType('application/json');
+    }
 }
