@@ -22,11 +22,13 @@
 
     **Note:** In order to use Inertia.js, you will need any one of [Client-side adapters](https://inertiajs.com/client-side-setup). This plugin leverages [AssetMix plugin](https://github.com/ishanvyas22/asset-mix/tree/cake3) so you don't have to install all the client side dependencies one by one. Instead you can directly generate scaffolding(using above command) to quickly get started.
 
-3. Install front-end dependencies
+4. Load AssetMix helper from the plugin into your `AppView.php` file:
 
-    ```bash
-    npm install
+    ```php
+    $this->loadHelper('AssetMix.AssetMix');
     ```
+
+    And just add `echo $this->AssetMix->script('app');` into your layout(`Template/Layout/default.ctp`) file. Checkout [this](https://github.com/ishanvyas22/asset-mix#usage) for more info.
 
 ## Server-side Setup
 
@@ -52,7 +54,9 @@ class AppController extends Controller
 
 #### Root template:
 
-By default, it uses plugin's `Inertia/app.ctp` file as root template. Behind the scene it will create a `div` element with `id="app"` attribute.
+A Root template is a file that will be loaded on the first page visit. This will be used to load your site assets (CSS and JavaScript), and will also contain a root <div> to boot your JavaScript application in. For more info visit [this link](https://inertiajs.com/server-side-setup#root-template).
+
+By default, it will use the plugin's `Inertia/app.ctp` file as root template.
 
 #### Render different components:
 
