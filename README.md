@@ -14,7 +14,7 @@
     bin/cake plugin load Inertia
     ```
 
-3. Generate inertia scaffolding
+3. Generate inertia scaffolding using [AssetMix plugin](https://github.com/ishanvyas22/asset-mix/tree/cake3)
 
     ```bash
     bin/cake asset_mix generate inertia-vue
