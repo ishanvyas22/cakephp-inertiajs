@@ -14,13 +14,13 @@
     bin/cake plugin load Inertia
     ```
 
-3. Generate inertia scaffolding using [AssetMix plugin](https://github.com/ishanvyas22/asset-mix/tree/cake3)
+3. Generate `inertia-vue` scaffolding
 
     ```bash
     bin/cake asset_mix generate inertia-vue
     ```
 
-    **Note:** Above command will generate basic scaffolding to use inertia with Vue.js. For more front-end adapters please visit https://inertiajs.com/client-side-setup.
+    **Note:** In order to use Inertia.js, you will need any one of [Client-side adapters](https://inertiajs.com/client-side-setup). This plugin leverages [AssetMix plugin](https://github.com/ishanvyas22/asset-mix/tree/cake3) so you don't have to install all the client side dependencies one by one. Instead you can directly generate scaffolding(using above command) to quickly get started.
 
 3. Install dependencies
 
@@ -28,64 +28,69 @@
     npm install
     ```
 
-## Setup
+## Server-side Setup
 
-1. Just add `Inertia\Controller\InertiaResponseTrait` into your controller in which you want to use inertia. And it will automatically render the response according to the request.
-
-2. By default, it uses plugin's `Inertia/app.ctp` file as root template, but you can customize it according your needs via `InertiaHelper`:
-
-    First load Inertia helper into your ``AppView.php`` file:
-    ```
-    $this->loadHelper('Inertia.Inertia');
-    ```
-
-    In your template file add below lines:
-    ```
-    echo $this->Inertia->make($data, ['id' => 'app']);
-    ```
-
-    Behind the scene it will create a `div` element with `id="app"` attribute. You can change ``app`` id according to your convenience.
-
-## Creating responses
-
-To create an inertia response you just have to use `InertiaResponseTrait` that ships with this plugin. This will handle all the heavy lifting that is needed render your view/component.
+To start using Inertia.js into your app, you just have to add `Inertia\Controller\InertiaResponseTrait` into your `AppController.php` controller. And it will automatically render the response according to the request.
 
 ```php
 <?php
 
 namespace App\Controller;
 
+use Cake\Controller\Controller;
 use Inertia\Controller\InertiaResponseTrait;
 
-class UsersController extends AppController
+class AppController extends Controller
 {
     use InertiaResponseTrait;
 
-    public function index()
-    {
-        $this->set('users', $this->Users->find()->toArray());
-    }
+    // ...
 }
 ```
 
-As you can see in above response you just have to set the variables that you need in you view, same as you do with your CakePHP template files.
+`InertiaResponseTrait` will handle all the heavy lifting that is needed render your views and components. As you can see in above example, you just have to set the variables(same as you do with your CakePHP template files) that you need into your javascript component files.
 
-It follows same convention as CakePHP, so above code will render `Index.vue` component inside `Users` directory. In case, you want to render any other component just set component view var and it will render it accordingly. For example, if you want to render `Listing.vue` file:
+#### Root template
+
+By default, it uses plugin's `Inertia/app.ctp` file as root template. Behind the scene it will create a `div` element with `id="app"` attribute.
+
+#### Render different components
+
+This plugin follows same convention as CakePHP, so by default it will render `Index.vue` component inside `Users` directory. In case, you want to render any other component just set `$component` view variable and it will render that component accordingly. For example, if you want to render `Listing.vue` file inside of `Users` directory:
 
 ```php
+<?php
+
+namespace App\Controller;
+
+use App\Controller\AppController;
+
+class UsersController extends AppController
+{
     public function index()
     {
         $this->set('users', $this->Users->find()->toArray());
         $this->set('component', 'Users/Listing');
     }
+}
 ```
 
 #### Customize `beforeRender` hook
 
 `InertiaResponseTrait` uses `beforeRender` hook internally to handle the view specific logic. But there might be some scenarios in which you want to use this hook to manipulate or customize some behavior. Since if you will directly call `beforeRender` method in your controller, it will override whole behavior which is not what you want.
 
-To override `beforeRender` hook:
+So instead you should do like this:
+
 ```php
+<?php
+
+namespace App\Controller;
+
+use Cake\Controller\Controller;
+use Inertia\Controller\InertiaResponseTrait;
+
+class AppController extends Controller
+{
     // Alias the trait's `beforeRender` method
     use InertiaResponseTrait {
         beforeRender as protected inertiaBeforeRender;
@@ -97,41 +102,12 @@ To override `beforeRender` hook:
 
         // Do your customization here.
     }
+}
 ```
 
 **Note:** You must have to call `beforeRender` method of `InertiaResponseTrait`, otherwise the inertia response won't work as expected.
 
-## Sharing data
 
-Often you want to use some data across your application, for example accessing current logged in user's name or flash messages. You can easily share these type data using ``share()`` function.
-
-Set application name:
-
-```
-$this->Inertia->share('app.name', 'Inertia');
-```
-
-Set currently logged in user's details:
-
-```
-$this->Inertia->share('auth.user', function () {
-    $authUser = null;
-
-    if ($this->Authentication->getIdentity()) {
-        $authUser = $this->Authentication->getIdentity();
-    }
-
-    return $authUser;
-});
-```
-
-Set flash messages:
-
-```
-$this->Inertia->share('app.flash', function () {
-    return $this->Inertia->getFlashData();
-});
-```
 
 ## Issues
 Feel free to submit issues and enhancement requests.
