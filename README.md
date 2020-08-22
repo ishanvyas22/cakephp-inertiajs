@@ -14,7 +14,7 @@
     bin/cake plugin load Inertia
     ```
 
-3. Generate `inertia-vue` scaffolding
+3. Generate Client-side scaffolding (Inertia.js + Vue.js)
 
     ```bash
     bin/cake asset_mix generate inertia-vue
