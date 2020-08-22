@@ -37,7 +37,7 @@ class UsersControllerTest extends TestCase
     public function testItReturnsInertiaJsonViewResponseWhenRequestIsXInertia()
     {
         $this->configRequest([
-            'headers' => ['X-Inertia' => 'true']
+            'headers' => ['X-Inertia' => 'true'],
         ]);
 
         $this->get('/users/index');
