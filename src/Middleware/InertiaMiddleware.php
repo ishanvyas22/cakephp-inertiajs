@@ -17,13 +17,13 @@ class InertiaMiddleware
      */
     public function __invoke($request, $response, $next)
     {
-        $response = $next($request, $response);
-
         if (! $request->hasHeader('X-Inertia')) {
-            return $response;
+            return $next($request, $response);
         }
 
         $this->setupDetector($request);
+
+        $response = $next($request, $response);
 
         if (
             $response instanceof Response
@@ -33,7 +33,7 @@ class InertiaMiddleware
             $response->withStatus(Message::STATUS_SEE_OTHER);
         }
 
-        return $response;
+        return $response->withHeader('X-Inertia', 'true');
     }
 
     /**
