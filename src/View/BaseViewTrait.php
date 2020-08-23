@@ -27,7 +27,11 @@ trait BaseViewTrait
     private function getComponentName()
     {
         if ($this->get('component') !== null) {
-            return $this->get('component');
+            $component = $this->get('component');
+
+            unset($this->viewVars['component']);
+
+            return $component;
         }
 
         return sprintf(
@@ -45,17 +49,37 @@ trait BaseViewTrait
     private function getProps()
     {
         $props = [];
+        $only = $this->getPartialData();
+        $onlyViewVars = (! empty($only)) ? $only : array_keys($this->viewVars);
+        $passedViewVars = $this->viewVars;
 
-        foreach ($this->viewVars as $varName => &$value) {
-            if (in_array($varName, ['component', 'url', 'props'])) {
+        $this->viewVars = [];
+
+        foreach ($onlyViewVars as $varName) {
+            if (! isset($passedViewVars[$varName])) {
                 continue;
             }
 
-            $props[$varName] = $value;
-
-            unset($this->viewVars[$varName]);
+            $props[$varName] = $passedViewVars[$varName];
         }
 
         return $props;
+    }
+
+    /**
+     * Returns view variable names from `X-Inertia-Partial-Data` header.
+     *
+     * @return array
+     */
+    public function getPartialData()
+    {
+        if (! $this->getRequest()->is('inertia-partial-data')) {
+            return [];
+        }
+
+        return explode(
+            ',',
+            $this->getRequest()->getHeader('X-Inertia-Partial-Data')[0]
+        );
     }
 }

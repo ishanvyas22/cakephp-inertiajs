@@ -17,7 +17,20 @@ class UsersController extends AppController
             ],
         ];
 
-        $this->set(compact('users'));
+        $posts = [
+            [
+                'title' => 'Title 1',
+                'body' => 'Body of title 1',
+            ],
+            [
+                'title' => 'Title 2',
+                'body' => 'Body of title 2',
+            ],
+        ];
+
+        $postsCount = count($posts);
+
+        $this->set(compact('users', 'posts', 'postsCount'));
     }
 
     public function customComponent()

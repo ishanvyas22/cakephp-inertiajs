@@ -21,7 +21,7 @@ class InertiaMiddleware
             return $next($request, $response);
         }
 
-        $this->setupDetector($request);
+        $this->setupDetectors($request);
 
         $response = $next($request, $response);
 
@@ -39,15 +39,23 @@ class InertiaMiddleware
     }
 
     /**
-     * Set `inertia` detector in the request to use it throughout the application.
+     * Set detectors in the request to use it throughout the application.
      *
      * @param  \Cake\Http\ServerRequest $request The request.
      * @return void
      */
-    private function setupDetector($request)
+    private function setupDetectors($request)
     {
         $request->addDetector('inertia', function ($request) {
             return $request->hasHeader('X-Inertia');
+        });
+
+        $request->addDetector('inertia-partial-component', function ($request) {
+            return $request->hasHeader('X-Inertia-Partial-Component');
+        });
+
+        $request->addDetector('inertia-partial-data', function ($request) {
+            return $request->hasHeader('X-Inertia-Partial-Data');
         });
     }
 }

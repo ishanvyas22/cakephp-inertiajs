@@ -45,4 +45,39 @@ class UsersControllerTest extends TestCase
         $this->assertResponseOk();
         $this->assertContentType('application/json');
     }
+
+    public function testPartiaReloads()
+    {
+        $this->configRequest([
+            'headers' => [
+                'X-Inertia' => 'true',
+                'X-Inertia-Partial-Data' => 'posts,postsCount',
+                'X-Inertia-Partial-Component' => 'Users/Index',
+            ],
+        ]);
+
+        $this->get('/users/index');
+
+        $this->assertContentType('application/json');
+        $this->assertResponseOk();
+
+        $expected = json_encode([
+            'component' => 'Users/Index',
+            'url' => 'http://localhost/users/index',
+            'props' => [
+                'posts' => [
+                    [
+                        'title' => 'Title 1',
+                        'body' => 'Body of title 1',
+                    ],
+                    [
+                        'title' => 'Title 2',
+                        'body' => 'Body of title 2',
+                    ],
+                ],
+                'postsCount' => 2,
+            ],
+        ], JSON_PRETTY_PRINT);
+        $this->assertEquals($expected, (string)$this->_response->getBody());
+    }
 }
