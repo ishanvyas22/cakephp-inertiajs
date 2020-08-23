@@ -28,7 +28,7 @@
     $this->loadHelper('AssetMix.AssetMix');
     ```
 
-    And just add `echo $this->AssetMix->script('app');` into your layout(`Template/Layout/default.ctp`) file. Checkout [this](https://github.com/ishanvyas22/asset-mix#usage) for more info.
+    And just add `echo $this->AssetMix->script('app');` into your layout(`Template/Layout/default.ctp`) file. For more info visit [this link](https://github.com/ishanvyas22/asset-mix#usage).
 
 ## Server-side Setup
 
