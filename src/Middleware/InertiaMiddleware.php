@@ -30,10 +30,12 @@ class InertiaMiddleware
             && $response->getStatusCode() === Message::STATUS_FOUND
             && in_array($request->getMethod(), [Message::METHOD_PUT, Message::METHOD_PATCH, Message::METHOD_DELETE])
         ) {
-            $response->withStatus(Message::STATUS_SEE_OTHER);
+            $response = $response->withStatus(Message::STATUS_SEE_OTHER);
         }
 
-        return $response->withHeader('X-Inertia', 'true');
+        return $response
+            ->withHeader('Vary', 'Accept')
+            ->withHeader('X-Inertia', 'true');
     }
 
     /**

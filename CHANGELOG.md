@@ -8,7 +8,7 @@
 - Added `cakephp/cakephp-codesniffer` as a dev dependency ([#2](https://github.com/ishanvyas22/cakephp-inertiajs/pull/2))
 - Added `phpstan` as a dev dependency ([#2](https://github.com/ishanvyas22/cakephp-inertiajs/pull/2))
 - Added `.travis.yml` for travis CI ([#2](https://github.com/ishanvyas22/cakephp-inertiajs/pull/2))
-- Set X-Inertia header in response when request is X-Inertia ([a0cbe5d](https://github.com/ishanvyas22/cakephp-inertiajs/pull/3/commits/a0cbe5d588b97a09e81e1b25180057ec186d73d5))
+- Set `Vary`, `X-Inertia` headers in response when when returning json response ([a0cbe5d](https://github.com/ishanvyas22/cakephp-inertiajs/pull/3/commits/a0cbe5d588b97a09e81e1b25180057ec186d73d5))
 - Added AssetMix plugin as a dependency ([75505fb](https://github.com/ishanvyas22/cakephp-inertiajs/pull/3/commits/75505fb79f424c316039a1b0ee90560828a7a398), [ee74e89](https://github.com/ishanvyas22/cakephp-inertiajs/pull/3/commits/ee74e892e843129bbd0185c6bebf7eaeda447b66))
 - Added `CHANGELOG.md` file ([52aabd4](https://github.com/ishanvyas22/cakephp-inertiajs/pull/3/commits/52aabd4444e7a07906bd7db8fa4e1bb9152c1fff))
 
