@@ -2,7 +2,9 @@
 
 namespace Inertia;
 
+use AssetMix\Plugin as AssetMixPlugin;
 use Cake\Core\BasePlugin;
+use Cake\Core\PluginApplicationInterface;
 use Inertia\Middleware\InertiaMiddleware;
 
 /**
@@ -22,5 +24,15 @@ class Plugin extends BasePlugin
         $middleware->add(new InertiaMiddleware());
 
         return $middleware;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function bootstrap(PluginApplicationInterface $app)
+    {
+        parent::bootstrap($app);
+
+        $app->addPlugin(AssetMixPlugin::class);
     }
 }
