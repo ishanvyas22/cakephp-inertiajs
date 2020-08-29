@@ -66,6 +66,20 @@ A Root template is a file that will be loaded on the first page visit. This will
 
 By default, it will use the plugin's `Template/Inertia/app.ctp` file as root template.
 
+If you want to override this, read [Overriding Plugin Templates from Inside Your Application](https://book.cakephp.org/3/en/plugins.html#overriding-plugin-templates-from-inside-your-application) section from cookbook. After creating the template file, you can use [`InertiaHelper`](https://github.com/ishanvyas22/cakephp-inertiajs/blob/master/src/View/Helper/InertiaHelper.php#L20) to quickly generate a `<div>` element.
+
+```php
+<?php
+
+echo $this->Inertia->make($page, 'app', 'container clearfix');
+```
+
+**Output:**
+
+```html
+<div id="app" data-page="{'component':'ComponentName','url':'http://example.test','props':{...}}" class="container clearfix"></div>
+```
+
 #### Render different components:
 
 This plugin follows same convention as CakePHP, so for `UsersController.php`'s `index` action it will render `Index.vue` component inside `Users` directory by default.
