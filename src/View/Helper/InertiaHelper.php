@@ -1,5 +1,5 @@
 <?php
-namespace InertiaCake\View\Helper;
+namespace Inertia\View\Helper;
 
 use Cake\View\Helper;
 
@@ -19,7 +19,7 @@ class InertiaHelper extends Helper
     /**
      * Returns inertia div.
      *
-     * @param  array $pageData Page data to set into vue.
+     * @param  array $pageData Page data to set into component.
      * @param  string $id Id attribute of the div.
      * @param  string $class Class attribute of the div.
      * @return string

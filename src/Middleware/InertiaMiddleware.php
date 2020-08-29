@@ -1,9 +1,9 @@
 <?php
 
-namespace InertiaCake\Middleware;
+namespace Inertia\Middleware;
 
-use InertiaCake\Utility\Message;
 use Cake\Http\Response;
+use Inertia\Utility\Message;
 
 class InertiaMiddleware
 {
@@ -17,29 +17,45 @@ class InertiaMiddleware
      */
     public function __invoke($request, $response, $next)
     {
-        // Calling $next() delegates control to the *next* middleware
-        // In your application's queue.
-        $response = $next($request, $response);
-
         if (! $request->hasHeader('X-Inertia')) {
-            return $response;
+            return $next($request, $response);
         }
 
-        // if ($request->getMethod() === 'GET' && $request->getHeader('X-Inertia-Version') !== Inertia::getVersion()) {
-        //     if ($request->getSession()) {
-        //         $request->getSession()->reflash();
-        //     }
+        $this->setupDetectors($request);
 
-        //     return Response::make('', Message::STATUS_CONFLICT, ['X-Inertia-Location' => $request->fullUrl()]);
-        // }
+        $response = $next($request, $response);
 
-        if ($response instanceof Response
+        if (
+            $response instanceof Response
             && $response->getStatusCode() === Message::STATUS_FOUND
             && in_array($request->getMethod(), [Message::METHOD_PUT, Message::METHOD_PATCH, Message::METHOD_DELETE])
         ) {
-            $response->withStatus(Message::STATUS_SEE_OTHER);
+            $response = $response->withStatus(Message::STATUS_SEE_OTHER);
         }
 
-        return $response;
+        return $response
+            ->withHeader('Vary', 'Accept')
+            ->withHeader('X-Inertia', 'true');
+    }
+
+    /**
+     * Set detectors in the request to use it throughout the application.
+     *
+     * @param  \Cake\Http\ServerRequest $request The request.
+     * @return void
+     */
+    private function setupDetectors($request)
+    {
+        $request->addDetector('inertia', function ($request) {
+            return $request->hasHeader('X-Inertia');
+        });
+
+        $request->addDetector('inertia-partial-component', function ($request) {
+            return $request->hasHeader('X-Inertia-Partial-Component');
+        });
+
+        $request->addDetector('inertia-partial-data', function ($request) {
+            return $request->hasHeader('X-Inertia-Partial-Data');
+        });
     }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace InertiaCake\Utility;
+namespace Inertia\Utility;
 
 use Cake\Http\Client\Message as CakeMessage;
 
