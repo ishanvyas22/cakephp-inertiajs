@@ -1,1 +1,3 @@
-<div class='container clearfix' id='app' data-page='<?= json_encode($page) ?>'></div>
+<?php
+
+echo $this->Inertia->make($page, 'app', '');

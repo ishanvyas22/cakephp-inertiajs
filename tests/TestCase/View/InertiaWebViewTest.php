@@ -23,7 +23,7 @@ class InertiaWebViewTest extends TestCase
 
         $result = $this->View->render();
 
-        $this->assertContains("<div class='container clearfix' id='app'", $result);
+        $this->assertContains('<div id="app"', $result);
         $this->assertContains('"props":{"user":{"id":1,"name":"John Doe"}}', $result);
     }
 

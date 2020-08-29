@@ -14,6 +14,14 @@ class InertiaWebView extends View
     /**
      * @inheritDoc
      */
+    public function initialize()
+    {
+        $this->loadHelper('Inertia.Inertia');
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function render($view = null, $layout = null)
     {
         $page = [

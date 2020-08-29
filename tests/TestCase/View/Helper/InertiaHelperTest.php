@@ -47,8 +47,23 @@ class InertiaHelperTest extends TestCase
      *
      * @return void
      */
-    public function testInitialization()
+    public function testItReturnsRootTemplateDiv()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $page = [
+            'component' => 'Users/Index',
+            'url' => 'http://example.test/users',
+            'props' => [
+                'users' => [
+                    ['id' => 1, 'name' => 'John Doe'],
+                    ['id' => 2, 'name' => 'Jane Doe'],
+                ],
+            ],
+        ];
+
+        $result = $this->Inertia->make($page, 'app', 'container');
+
+        $this->assertContains('<div id="app"', $result);
+        $this->assertContains('data-page="{"component":"Users', $result);
+        $this->assertContains('class="container"></div>', $result);
     }
 }
