@@ -20,7 +20,7 @@
     bin/cake asset_mix generate inertia-vue
     ```
 
-    **Note:** In order to use Inertia.js, you will need any one of [Client-side adapters](https://inertiajs.com/client-side-setup). This plugin leverages [AssetMix plugin](https://github.com/ishanvyas22/asset-mix/tree/cake3) so you don't have to install all the client side dependencies one by one. Instead you can directly generate scaffolding(using above command) to quickly get started.
+    **Note:** In order to use Inertia.js, you will need any one of [Client-side adapters](https://inertiajs.com/client-side-setup). This plugin leverages [AssetMix plugin](https://github.com/ishanvyas22/asset-mix/tree/cake3) so you don't have to install all the front-end dependencies one by one. Instead you can directly generate scaffolding(using above command) to quickly get started.
 
 4. Load AssetMix helper from the plugin into your `AppView.php` file:
 
