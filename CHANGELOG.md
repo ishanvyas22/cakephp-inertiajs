@@ -1,6 +1,8 @@
 # Release Notes
 
-## [Unreleased](https://github.com/ishanvyas22/cakephp-inertiajs/compare/0.1.1...master)
+## [Unreleased](https://github.com/ishanvyas22/cakephp-inertiajs/compare/1.0.0...master)
+
+## [1.0.0 (2020-08-29)](https://github.com/ishanvyas22/cakephp-inertiajs/compare/0.1.1...1.0.0)
 
 ### Added
 - Added tests ([#1](https://github.com/ishanvyas22/cakephp-inertiajs/pull/1))
