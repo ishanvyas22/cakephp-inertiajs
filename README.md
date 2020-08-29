@@ -4,6 +4,7 @@
 [![Latest Stable Version](https://poser.pugx.org/ishanvyas22/cakephp-inertiajs/v)](//packagist.org/packages/ishanvyas22/cakephp-inertiajs)
 [![Total Downloads](https://poser.pugx.org/ishanvyas22/cakephp-inertiajs/downloads)](//packagist.org/packages/ishanvyas22/cakephp-inertiajs)
 [![License](https://poser.pugx.org/ishanvyas22/cakephp-inertiajs/license)](//packagist.org/packages/ishanvyas22/cakephp-inertiajs)
+[![CakePHP](https://img.shields.io/badge/cakephp-%3E%3D%203.5.0-red?logo=cakephp)](https://book.cakephp.org/3/en/index.html)
 
 CakePHP server side adapter for [Inertia.js](https://inertiajs.com/) to build single-page apps, without building an API.
 
