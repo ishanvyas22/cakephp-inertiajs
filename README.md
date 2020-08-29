@@ -1,5 +1,12 @@
 # CakePHP Adapter for Inertia.js
 
+[![Build Status](https://travis-ci.com/ishanvyas22/cakephp-inertiajs.svg?branch=master)](https://travis-ci.com/ishanvyas22/cakephp-inertiajs)
+[![Latest Stable Version](https://poser.pugx.org/ishanvyas22/cakephp-inertiajs/v/stable)](https://packagist.org/packages/ishanvyas22/cakephp-inertiajs)
+[![Total Downloads](https://poser.pugx.org/ishanvyas22/cakephp-inertiajs/downloads)](https://packagist.org/packages/ishanvyas22/cakephp-inertiajs)
+[![License](https://poser.pugx.org/ishanvyas22/cakephp-inertiajs/license)](https://packagist.org/packages/ishanvyas22/cakephp-inertiajs)
+
+CakePHP server side adapter for [Inertia.js](https://inertiajs.com/) to build single-page apps, without building an API.
+
 ## Installation
 
 1. Add this plugin to your application with [composer](https://getcomposer.org)
