@@ -10,13 +10,6 @@ class InertiaHelper extends Helper
 {
 
     /**
-     * Default configuration.
-     *
-     * @var array
-     */
-    protected $_defaultConfig = [];
-
-    /**
      * Returns inertia div.
      *
      * @param  array $pageData Page data to set into component.
@@ -26,13 +19,11 @@ class InertiaHelper extends Helper
      */
     public function make($pageData, $id = 'app', $class = '')
     {
-        $page = json_encode($pageData);
-
         return sprintf(
-            "<div class='%s' id='%s' data-page='%s'></div>",
-            $class,
+            '<div id="%s" data-page="%s" class="%s"></div>',
             $id,
-            $page
+            json_encode($pageData),
+            $class
         );
     }
 }
