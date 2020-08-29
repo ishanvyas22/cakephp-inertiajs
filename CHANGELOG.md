@@ -5,6 +5,9 @@
 ### Added
 - Added issue and feature request templates ([807d935](https://github.com/ishanvyas22/cakephp-inertiajs/commit/807d935df1465eb642b958287c5488a12140d39d))
 
+### Changed
+- Use InertiaHelper to generate root template `<div>` tag ([#4](https://github.com/ishanvyas22/cakephp-inertiajs/pull/4))
+
 ## [1.0.0 (2020-08-29)](https://github.com/ishanvyas22/cakephp-inertiajs/compare/0.1.1...1.0.0)
 
 ### Added
