@@ -2,6 +2,9 @@
 
 ## [Unreleased](https://github.com/ishanvyas22/cakephp-inertiajs/compare/1.0.0...master)
 
+### Added
+- Added issue and feature request templates ([807d935](https://github.com/ishanvyas22/cakephp-inertiajs/commit/807d935df1465eb642b958287c5488a12140d39d))
+
 ## [1.0.0 (2020-08-29)](https://github.com/ishanvyas22/cakephp-inertiajs/compare/0.1.1...1.0.0)
 
 ### Added
