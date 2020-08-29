@@ -56,7 +56,7 @@ class AppController extends Controller
 
 A Root template is a file that will be loaded on the first page visit. This will be used to load your site assets (CSS and JavaScript), and will also contain a root `<div>` to boot your JavaScript application in. For more info visit [this link](https://inertiajs.com/server-side-setup#root-template).
 
-By default, it will use the plugin's `Inertia/app.ctp` file as root template.
+By default, it will use the plugin's `Template/Inertia/app.ctp` file as root template.
 
 #### Render different components:
 
