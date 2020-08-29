@@ -5,6 +5,7 @@ namespace Inertia\Test\TestCase\Controller;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 use Inertia\Controller\InertiaResponseTrait;
+use Inertia\Utility\Message;
 
 class UsersControllerTest extends TestCase
 {
@@ -79,5 +80,16 @@ class UsersControllerTest extends TestCase
             ],
         ], JSON_PRETTY_PRINT);
         $this->assertEquals($expected, (string)$this->_response->getBody());
+    }
+
+    public function testItRedirectsWithSeeOtherResponseCode()
+    {
+        $this->configRequest([
+            'headers' => ['X-Inertia' => 'true'],
+        ]);
+
+        $this->put('/users/store', ['test' => 'data']);
+
+        $this->assertResponseCode(Message::STATUS_SEE_OTHER);
     }
 }

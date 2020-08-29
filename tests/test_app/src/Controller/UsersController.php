@@ -49,4 +49,9 @@ class UsersController extends AppController
 
         $this->set(compact('users', 'component'));
     }
+
+    public function store()
+    {
+        return $this->redirect('/users/index');
+    }
 }
