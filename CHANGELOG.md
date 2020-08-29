@@ -4,9 +4,14 @@
 
 ### Added
 - Added issue and feature request templates ([807d935](https://github.com/ishanvyas22/cakephp-inertiajs/commit/807d935df1465eb642b958287c5488a12140d39d))
+- Added CakePHP badge in `README.md` file ([f70fa5b](https://github.com/ishanvyas22/cakephp-inertiajs/commit/f70fa5b1cbf7fe3ae20b9154d9c9361d19e21534))
+- Added steps to how to override root template in `README.md` file ([0a416db](https://github.com/ishanvyas22/cakephp-inertiajs/commit/0a416db2024f0b51b7c9848e7cbb9beeee4c5eba))
 
 ### Changed
 - Use InertiaHelper to generate root template `<div>` tag ([#4](https://github.com/ishanvyas22/cakephp-inertiajs/pull/4))
+
+### Removed
+- Removed unused `webroot/` directory ([063b812](https://github.com/ishanvyas22/cakephp-inertiajs/commit/063b8129b79be87c01bb6bf672c54b6cdd0e0de7))
 
 ## [1.0.0 (2020-08-29)](https://github.com/ishanvyas22/cakephp-inertiajs/compare/0.1.1...1.0.0)
 
