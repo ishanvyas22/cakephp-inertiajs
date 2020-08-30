@@ -17,6 +17,7 @@ class InertiaWebView extends View
     public function initialize()
     {
         $this->loadHelper('Inertia.Inertia');
+        $this->loadHelper('AssetMix.AssetMix');
     }
 
     /**
