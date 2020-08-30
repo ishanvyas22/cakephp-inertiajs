@@ -1,11 +1,16 @@
 # Release Notes
 
-## [Unreleased](https://github.com/ishanvyas22/cakephp-inertiajs/compare/1.0.0...master)
+## [Unreleased](https://github.com/ishanvyas22/cakephp-inertiajs/compare/1.1.0...master)
+
+## [1.1.0 (2020-08-30)](https://github.com/ishanvyas22/cakephp-inertiajs/compare/1.0.0...1.1.0)
 
 ### Added
 - Added issue and feature request templates ([807d935](https://github.com/ishanvyas22/cakephp-inertiajs/commit/807d935df1465eb642b958287c5488a12140d39d))
 - Added CakePHP badge in `README.md` file ([f70fa5b](https://github.com/ishanvyas22/cakephp-inertiajs/commit/f70fa5b1cbf7fe3ae20b9154d9c9361d19e21534))
 - Added steps to how to override root template in `README.md` file ([0a416db](https://github.com/ishanvyas22/cakephp-inertiajs/commit/0a416db2024f0b51b7c9848e7cbb9beeee4c5eba))
+- Added test to check status code is 303 when using redirect for `PUT` method ([cffba95](https://github.com/ishanvyas22/cakephp-inertiajs/commit/cffba95c365b770fa9da0c2cbc93fdf31afa1678))
+- Added `AssetMix` helper of AssetMix plugin into `InertiaWebView` ([9b97a15](https://github.com/ishanvyas22/cakephp-inertiajs/commit/9b97a15ec9216f42078b2f5da5fc25bf87272d79))
+- Added sample html content as a example in README.md file ([bbcc61f](https://github.com/ishanvyas22/cakephp-inertiajs/commit/bbcc61fb53505f2a7565ab4e83888f7e604c30da))
 
 ### Changed
 - Use InertiaHelper to generate root template `<div>` tag ([#4](https://github.com/ishanvyas22/cakephp-inertiajs/pull/4))
