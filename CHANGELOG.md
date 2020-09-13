@@ -2,6 +2,9 @@
 
 ## [Unreleased](https://github.com/ishanvyas22/cakephp-inertiajs/compare/1.1.0...master)
 
+### Changed
+- Remove vendor/bin from composer.json used in alias ([b042f11](https://github.com/ishanvyas22/cakephp-inertiajs/commit/b042f11d5e462d95b459f1abd20bbfe71c8e19a5))
+
 ## [1.1.0 (2020-08-30)](https://github.com/ishanvyas22/cakephp-inertiajs/compare/1.0.0...1.1.0)
 
 ### Added
