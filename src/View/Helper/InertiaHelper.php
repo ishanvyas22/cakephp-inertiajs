@@ -19,10 +19,16 @@ class InertiaHelper extends Helper
      */
     public function make($pageData, $id = 'app', $class = '')
     {
+        $encodedPageData = json_encode($pageData);
+
+        if ($encodedPageData === false) {
+            $encodedPageData = '';
+        }
+
         return sprintf(
             '<div id="%s" data-page="%s" class="%s"></div>',
             $id,
-            htmlentities(json_encode($pageData)),
+            htmlentities($encodedPageData),
             $class
         );
     }
