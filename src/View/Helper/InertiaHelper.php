@@ -22,7 +22,7 @@ class InertiaHelper extends Helper
         return sprintf(
             '<div id="%s" data-page="%s" class="%s"></div>',
             $id,
-            json_encode($pageData),
+            htmlentities(json_encode($pageData)),
             $class
         );
     }

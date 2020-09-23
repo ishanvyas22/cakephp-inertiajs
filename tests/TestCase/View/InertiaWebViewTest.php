@@ -24,7 +24,7 @@ class InertiaWebViewTest extends TestCase
         $result = $this->View->render();
 
         $this->assertContains('<div id="app"', $result);
-        $this->assertContains('"props":{"user":{"id":1,"name":"John Doe"}}', $result);
+        $this->assertContains(htmlentities('"props":{"user":{"id":1,"name":"John Doe"}}'), $result);
     }
 
     public function testRendersComponentName()
@@ -34,6 +34,6 @@ class InertiaWebViewTest extends TestCase
 
         $result = $this->View->render();
 
-        $this->assertContains(json_encode('Users/Index'), $result);
+        $this->assertContains('&quot;Users\/Index&quot', $result);
     }
 }

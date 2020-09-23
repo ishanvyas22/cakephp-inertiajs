@@ -63,7 +63,7 @@ class InertiaHelperTest extends TestCase
         $result = $this->Inertia->make($page, 'app', 'container');
 
         $this->assertContains('<div id="app"', $result);
-        $this->assertContains('data-page="{"component":"Users', $result);
+        $this->assertContains('page="{&quot;component&quot;:&quot;Users', $result);
         $this->assertContains('class="container"></div>', $result);
     }
 }

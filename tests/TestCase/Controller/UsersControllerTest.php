@@ -19,10 +19,10 @@ class UsersControllerTest extends TestCase
         $this->assertResponseOk();
         $this->assertContentType('text/html');
         $this->assertTemplate('app');
-        $this->assertResponseContains(json_encode('Users/Index'));
-        $this->assertResponseContains(json_encode('http://localhost/users/index'));
-        $this->assertResponseContains('"name":"InertiaTestApp"');
-        $this->assertResponseContains('"props"');
+        $this->assertResponseContains('&quot;Users\/Index&quot');
+        $this->assertResponseContains('&quot;http:\/\/localhost\/users\/index&quot');
+        $this->assertResponseContains('&quot;name&quot;:&quot;InertiaTestApp&quot;');
+        $this->assertResponseContains('props');
     }
 
     public function testItReturnsInertiaWebViewResponseWithCustomComponent()
@@ -32,7 +32,7 @@ class UsersControllerTest extends TestCase
         $this->assertResponseOk();
         $this->assertContentType('text/html');
         $this->assertTemplate('app');
-        $this->assertResponseContains(json_encode('Custom/Component'));
+        $this->assertResponseContains(htmlentities(json_encode('Custom/Component')));
     }
 
     public function testItReturnsInertiaJsonViewResponseWhenRequestIsXInertia()
