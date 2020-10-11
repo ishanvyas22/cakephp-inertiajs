@@ -12,6 +12,10 @@ CakePHP server side adapter for [Inertia.js](https://inertiajs.com/) to build si
 
 See [documentation](docs/README.md)
 
+## Reporting Issues
+
+If you are facing a problem with this plugin or found any bug, please open an issue on [GitHub](/ishanvyas22/cakephp-inertiajs/issues).
+
 ## ❤️  Support The Development
 
 **Do you like this project? Support it by donating:**
