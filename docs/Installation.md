@@ -54,7 +54,7 @@
 
     Now you are all set to start using your front end components as template files. All content will be render between `<body>` tag.
 
-    **Note:** If you've created fresh CakePHP project, you must have to create `Display.vue` component into `assets/js/Pages/Pages` directory. See [this](ClientSideSetup.md) link for more info.
+**Note:** If you've created fresh CakePHP project, you must have to create `Display.vue` component into `assets/js/Pages/Pages` directory. See [this](ClientSideSetup.md) link for more info.
 
 ---
 
