@@ -22,7 +22,7 @@ class AppController extends Controller
 
 `InertiaResponseTrait` will handle all the heavy lifting that is needed render your views and components. As you can see in above example, you just have to set the variables(same as you do with your CakePHP template files) that you need into your javascript component files.
 
-#### Root template:
+### Root template
 
 A Root template is a file that will be loaded on the first page visit. This will be used to load your site assets (CSS and JavaScript), and will also contain a root `<div>` to boot your JavaScript application in. For more info visit [this link](https://inertiajs.com/server-side-setup#root-template).
 
@@ -42,7 +42,7 @@ echo $this->Inertia->make($page, 'app', 'container clearfix');
 <div id="app" data-page="{'component':'ComponentName','url':'http://example.test','props':{...}}" class="container clearfix"></div>
 ```
 
-#### Render different components:
+### Render different components
 
 This plugin follows same convention as CakePHP, so for `UsersController.php`'s `index` action it will render `Index.vue` component inside `Users` directory by default.
 
@@ -65,7 +65,7 @@ class UsersController extends AppController
 }
 ```
 
-#### Customize `beforeRender` hook:
+### Customize `beforeRender` hook
 
 `InertiaResponseTrait` uses `beforeRender` hook internally to handle the view specific logic. But there might be some scenarios in which you want to use this hook to manipulate or customize some behavior. Since if you will directly call `beforeRender` method in your controller, it will override whole behavior which is not what you want.
 
