@@ -54,4 +54,4 @@
 
     Now you are all set to start using your front end components as template files. All content will be render between `<body>` tag.
 
-[≤≤ Go Back](README.md) | [Usage ≥≥](Usage.md)
+[< Go Back](README.md) | [Usage >](Usage.md)
