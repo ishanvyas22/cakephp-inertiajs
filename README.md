@@ -14,7 +14,7 @@ See [documentation](docs/README.md)
 
 ## Reporting Issues
 
-If you are facing a problem with this plugin or found any bug, please open an issue on [GitHub](/ishanvyas22/cakephp-inertiajs/issues).
+If you are facing a problem with this plugin or found any bug, please open an issue on [GitHub](https://github.com/ishanvyas22/cakephp-inertiajs/issues).
 
 ## ❤️  Support The Development
 
