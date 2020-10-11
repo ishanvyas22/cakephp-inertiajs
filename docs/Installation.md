@@ -58,4 +58,4 @@
 
 ---
 
-[< Go Back](README.md) | [Usage >](ServerSideSetup.md)
+[< Index](README.md) | [Usage >](ServerSideSetup.md)
