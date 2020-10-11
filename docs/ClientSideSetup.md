@@ -6,7 +6,7 @@ Once you have your [server-side framework configured](ServerSideSetup.md), you t
 
 **Note:** As of now AssetMix plugin only supports front-end scaffolding for Vue.js. If you want to use any other client side framework you can do so, refer [this](https://inertiajs.com/client-side-setup) link to know more.
 
-#### Adding new pages
+### Adding new pages
 
 As described in official documentation,
 
@@ -16,7 +16,7 @@ So to create new page you simply have to a new JavaScript component into `assets
 
 Refer official documentation for more info: https://inertiajs.com/pages#creating-pages
 
-#### Resolve component from another path
+### Resolve component from another path
 
 By default, all your components should go into the `Pages` directory inside your js root path(`assets/js` or `resources/js`) if you want to change this path, you have to edit `app.js` file to tell bundler to resolve another path.
 
