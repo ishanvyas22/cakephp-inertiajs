@@ -97,4 +97,6 @@ class AppController extends Controller
 
 **Note:** You must have to call `beforeRender` method of `InertiaResponseTrait`, otherwise the inertia response won't work as expected.
 
+---
+
 [< Installation](Installation.md)
