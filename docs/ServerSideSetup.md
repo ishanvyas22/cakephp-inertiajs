@@ -99,4 +99,4 @@ class AppController extends Controller
 
 ---
 
-[< Installation](Installation.md)
+[< Installation](Installation.md) | [Client-side Setup >](ClientSideSetup.md)
