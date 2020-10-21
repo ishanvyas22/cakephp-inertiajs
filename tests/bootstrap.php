@@ -1,10 +1,10 @@
 <?php
 
 use Cake\Cache\Cache;
-use Cake\Cache\Engine\FileEngine;
 use Cake\Core\Configure;
 use Cake\Core\Plugin;
 use Cake\Datasource\ConnectionManager;
+use Cake\Error\ExceptionRenderer;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -46,6 +46,13 @@ Configure::write('App', [
         'plugins' => [TEST_APP_DIR . 'plugins' . DS],
         'templates' => [TEST_APP_DIR . 'src' . DS . 'Template' . DS],
     ],
+]);
+Configure::write('Error', [
+    'errorLevel' => E_ALL,
+    'exceptionRenderer' => ExceptionRenderer::class,
+    'skipLog' => [],
+    'log' => true,
+    'trace' => true,
 ]);
 
 Cache::setConfig([

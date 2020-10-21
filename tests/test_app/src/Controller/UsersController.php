@@ -54,4 +54,9 @@ class UsersController extends AppController
     {
         return $this->redirect('/users/index');
     }
+
+    public function internalServerError()
+    {
+        echo $fail;
+    }
 }

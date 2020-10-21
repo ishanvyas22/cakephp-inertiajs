@@ -92,4 +92,34 @@ class UsersControllerTest extends TestCase
 
         $this->assertResponseCode(Message::STATUS_SEE_OTHER);
     }
+
+    public function testItReturnsHtmlResultFor404()
+    {
+        $this->configRequest([
+            'headers' => [
+                'X-Inertia' => 'true',
+                'X-Requested-With' => 'XMLHttpRequest',
+            ],
+        ]);
+
+        $this->get('/404');
+
+        $this->assertResponseCode(404);
+        $this->assertContentType('text/html');
+    }
+
+    public function testItReturnsHtmlResultFor500()
+    {
+        $this->configRequest([
+            'headers' => [
+                'X-Inertia' => 'true',
+                'X-Requested-With' => 'XMLHttpRequest',
+            ],
+        ]);
+
+        $this->get('/users/internal-server-error');
+
+        $this->assertResponseCode(500);
+        $this->assertContentType('text/html');
+    }
 }
