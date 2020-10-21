@@ -106,7 +106,6 @@ class UsersControllerTest extends TestCase
 
         $this->assertResponseCode(404);
         $this->assertContentType('text/html');
-
     }
 
     public function testItReturnsHtmlResultFor500()
@@ -122,6 +121,5 @@ class UsersControllerTest extends TestCase
 
         $this->assertResponseCode(500);
         $this->assertContentType('text/html');
-
     }
 }

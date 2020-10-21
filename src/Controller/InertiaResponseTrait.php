@@ -43,7 +43,7 @@ trait InertiaResponseTrait
     {
         $statusCode = $this->getResponse()->getStatusCode();
         $errorCodes = [
-            Message::STATUS_NOT_FOUND
+            Message::STATUS_NOT_FOUND,
         ];
 
         if (in_array($statusCode, $errorCodes)) {
@@ -62,7 +62,7 @@ trait InertiaResponseTrait
     {
         $statusCode = $this->getResponse()->getStatusCode();
         $failureCodes = [
-            Message::STATUS_INTERNAL_SERVER
+            Message::STATUS_INTERNAL_SERVER,
         ];
 
         if (in_array($statusCode, $failureCodes)) {
