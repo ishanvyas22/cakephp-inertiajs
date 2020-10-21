@@ -2,12 +2,15 @@
 
 namespace Inertia\Test;
 
-use Cake\TestSuite\IntegrationTestCase;
 use Inertia\Plugin;
 use TestApp\Application;
+use Cake\TestSuite\IntegrationTestTrait;
+use Cake\TestSuite\TestCase;
 
-class PluginTest extends IntegrationTestCase
+class PluginTest extends TestCase
 {
+    use IntegrationTestTrait;
+
     public function testBootstrap()
     {
         $plugin = new Plugin();
