@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/ishanvyas22/cakephp-inertiajs/compare/1.1.2...master)
+## [Unreleased](https://github.com/ishanvyas22/cakephp-inertiajs/compare/1.1.3...master)
+
+## [1.1.3 (2020-10-21)](https://github.com/ishanvyas22/cakephp-inertiajs/compare/1.1.2...1.1.3)
+
+### Fixed
+- Do not set `InertiaJsonView` when status is 404 or 500 ([#8](https://github.com/ishanvyas22/cakephp-inertiajs/pull/8))
 
 ## [1.1.2 (2020-10-11)](https://github.com/ishanvyas22/cakephp-inertiajs/compare/1.1.1...1.1.2)
 
