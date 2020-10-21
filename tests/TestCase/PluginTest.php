@@ -2,15 +2,15 @@
 
 namespace Inertia\Test;
 
-use Inertia\Plugin;
-use TestApp\Application;
-use Cake\TestSuite\TestCase;
+use Cake\Error\Middleware\ErrorHandlerMiddleware;
 use Cake\Http\MiddlewareQueue;
-use Cake\TestSuite\IntegrationTestTrait;
+use Cake\Http\Middleware\BodyParserMiddleware;
 use Cake\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\Middleware\RoutingMiddleware;
-use Cake\Error\Middleware\ErrorHandlerMiddleware;
-use Cake\Http\Middleware\BodyParserMiddleware;
+use Cake\TestSuite\IntegrationTestTrait;
+use Cake\TestSuite\TestCase;
+use Inertia\Plugin;
+use TestApp\Application;
 
 class PluginTest extends TestCase
 {

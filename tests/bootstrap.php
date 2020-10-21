@@ -1,10 +1,10 @@
 <?php
 
 use Cake\Cache\Cache;
-use Cake\Core\Plugin;
 use Cake\Core\Configure;
-use Cake\Error\ExceptionRenderer;
+use Cake\Core\Plugin;
 use Cake\Datasource\ConnectionManager;
+use Cake\Error\ExceptionRenderer;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 

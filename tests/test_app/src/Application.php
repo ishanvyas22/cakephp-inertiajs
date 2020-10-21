@@ -3,11 +3,11 @@
 namespace TestApp;
 
 use Cake\Core\Configure;
-use Cake\Http\BaseApplication;
-use Cake\Routing\Middleware\AssetMiddleware;
-use Cake\Http\Middleware\BodyParserMiddleware;
-use Cake\Routing\Middleware\RoutingMiddleware;
 use Cake\Error\Middleware\ErrorHandlerMiddleware;
+use Cake\Http\BaseApplication;
+use Cake\Http\Middleware\BodyParserMiddleware;
+use Cake\Routing\Middleware\AssetMiddleware;
+use Cake\Routing\Middleware\RoutingMiddleware;
 
 class Application extends BaseApplication
 {
