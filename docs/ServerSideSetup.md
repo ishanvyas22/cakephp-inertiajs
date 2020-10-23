@@ -99,7 +99,7 @@ class AppController extends Controller
 
 ### Flash messages
 
-When working with CakePHP we often use Flash messages to set one-time notification message to notify user that particular action has succeeded or not. This plugin makes it easier to work with Flash messages, because you don't have to do anything extra use make flash messages work.
+When working with CakePHP we often use Flash messages to set one-time notification message to acknowledge user that particular action has succeeded or not. This plugin makes it easier to work with Flash messages, because you don't have to do anything extra make flash messages work.
 
 To pass flash data into the front-end component, you simply have to set flash message as you normally would:
 
