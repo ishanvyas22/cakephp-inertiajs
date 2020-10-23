@@ -17,6 +17,8 @@ trait InertiaResponseTrait
         }
 
         $this->setViewBuilderClass();
+
+        $this->setFlashData();
     }
 
     /**
@@ -70,5 +72,19 @@ trait InertiaResponseTrait
         }
 
         return false;
+    }
+
+    /**
+     * Sets flash data, and deletes after setting it.
+     *
+     * @return void
+     */
+    protected function setFlashData()
+    {
+        $session = $this->getRequest()->getSession();
+
+        $this->set('flash', $session->read('Flash.flash'));
+
+        $session->delete('Flash');
     }
 }

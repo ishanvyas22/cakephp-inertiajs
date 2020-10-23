@@ -59,4 +59,9 @@ class UsersController extends AppController
     {
         echo $fail;
     }
+
+    public function checkFlashData()
+    {
+        $this->Flash->success('User saved successfully.');
+    }
 }

@@ -79,7 +79,7 @@ class UsersControllerTest extends TestCase
                 'postsCount' => 2,
             ],
         ], JSON_PRETTY_PRINT);
-        $this->assertEquals($expected, (string)$this->_response->getBody());
+        $this->assertEquals($expected, $this->_getBodyAsString());
     }
 
     public function testItRedirectsWithSeeOtherResponseCode()
@@ -121,5 +121,26 @@ class UsersControllerTest extends TestCase
 
         $this->assertResponseCode(500);
         $this->assertContentType('text/html');
+    }
+
+    public function testItSetsFlashDataIntoProps()
+    {
+        $this->configRequest([
+            'headers' => ['X-Inertia' => 'true'],
+        ]);
+
+        $this->get('/users/check-flash-data');
+        $responseArray = json_decode($this->_getBodyAsString(), true);
+
+        $this->assertResponseOk();
+        $this->assertArrayHasKey('flash', $responseArray['props']);
+        $this->assertEquals([
+            [
+                'message' => 'User saved successfully.',
+                'key' => 'flash',
+                'element' => 'Flash/success',
+                'params' => [],
+            ],
+        ], $responseArray['props']['flash']);
     }
 }
