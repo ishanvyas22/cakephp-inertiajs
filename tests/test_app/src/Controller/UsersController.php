@@ -59,4 +59,14 @@ class UsersController extends AppController
     {
         echo $fail;
     }
+
+    public function setSuccessFlash()
+    {
+        $this->Flash->success('User saved successfully.');
+    }
+
+    public function setErrorFlash()
+    {
+        $this->Flash->error('Something went wrong!');
+    }
 }

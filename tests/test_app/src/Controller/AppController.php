@@ -28,9 +28,6 @@ class AppController extends Controller
         $this->set('app', [
             'name' => 'InertiaTestApp',
         ]);
-        $this->set('flash', function () {
-            return ['message' => null];
-        });
         $this->set('auth', function () {
             return ['user' => null];
         });

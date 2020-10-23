@@ -97,6 +97,18 @@ class AppController extends Controller
 
 **Note:** You must have to call `beforeRender` method of `InertiaResponseTrait`, otherwise the inertia response won't work as expected.
 
+### Flash messages
+
+When working with CakePHP we often use Flash messages to set one-time notification message to acknowledge user that particular action has succeeded or not. This plugin makes it easier to work with Flash messages, because you don't have to do anything extra make flash messages work.
+
+To pass flash data into the front-end component, you simply have to set flash message as you normally would:
+
+```php
+$this->Flash->success('It worked!');
+```
+
+That's it! The flash data will automatically pass to component as a `Array` for you to use.
+
 ---
 
 [< Installation](Installation.md) | [Client-side Setup >](ClientSideSetup.md)
