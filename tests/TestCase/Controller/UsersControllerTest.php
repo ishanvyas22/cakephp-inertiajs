@@ -123,13 +123,13 @@ class UsersControllerTest extends TestCase
         $this->assertContentType('text/html');
     }
 
-    public function testItSetsFlashDataIntoProps()
+    public function testItSetsSuccessFlashDataIntoProps()
     {
         $this->configRequest([
             'headers' => ['X-Inertia' => 'true'],
         ]);
 
-        $this->get('/users/check-flash-data');
+        $this->get('/users/set-success-flash');
         $responseArray = json_decode($this->_getBodyAsString(), true);
 
         $this->assertResponseOk();
@@ -139,6 +139,27 @@ class UsersControllerTest extends TestCase
                 'message' => 'User saved successfully.',
                 'key' => 'flash',
                 'element' => 'Flash/success',
+                'params' => [],
+            ],
+        ], $responseArray['props']['flash']);
+    }
+
+    public function testItSetsErrorFlashDataIntoProps()
+    {
+        $this->configRequest([
+            'headers' => ['X-Inertia' => 'true'],
+        ]);
+
+        $this->get('/users/set-error-flash');
+        $responseArray = json_decode($this->_getBodyAsString(), true);
+
+        $this->assertResponseOk();
+        $this->assertArrayHasKey('flash', $responseArray['props']);
+        $this->assertEquals([
+            [
+                'message' => 'Something went wrong!',
+                'key' => 'flash',
+                'element' => 'Flash/error',
                 'params' => [],
             ],
         ], $responseArray['props']['flash']);
