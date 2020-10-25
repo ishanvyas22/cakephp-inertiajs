@@ -1,8 +1,8 @@
 <?php
 namespace Inertia\View;
 
-use Closure;
 use Cake\Routing\Router;
+use Closure;
 
 trait BaseViewTrait
 {
