@@ -1,6 +1,7 @@
 <?php
 namespace Inertia\View;
 
+use Closure;
 use Cake\Routing\Router;
 
 trait BaseViewTrait
@@ -60,7 +61,13 @@ trait BaseViewTrait
                 continue;
             }
 
-            $props[$varName] = $passedViewVars[$varName];
+            $prop = $passedViewVars[$varName];
+
+            if ($prop instanceof Closure) {
+                $props[$varName] = $prop();
+            } else {
+                $props[$varName] = $prop;
+            }
         }
 
         return $props;
