@@ -4,6 +4,7 @@
 
 ### Added
 - Set flash data automatically into view variables ([#9](https://github.com/ishanvyas22/cakephp-inertiajs/pull/9))
+- Lazy evaluate props ([#10](https://github.com/ishanvyas22/cakephp-inertiajs/pull/10))
 
 ### Changed
 - Use `Psr\Http\Message\ResponseInterface` instead of `Cake\Http\Response` concrete class ([ab61375](https://github.com/ishanvyas22/cakephp-inertiajs/commit/ab61375e19cdc7612b434de8b3cf78be6788ec26))
