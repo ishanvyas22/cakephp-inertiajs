@@ -84,6 +84,7 @@ class UsersControllerTest extends TestCase
 
     public function testItRedirectsWithSeeOtherResponseCode()
     {
+        $this->enableCsrfToken();
         $this->configRequest([
             'headers' => ['X-Inertia' => 'true'],
         ]);
@@ -159,5 +160,19 @@ class UsersControllerTest extends TestCase
             'element' => 'flash-error',
             'params' => [],
         ], $responseArray['props']['flash']);
+    }
+
+    public function testPropsContainsCsrfToken()
+    {
+        $this->configRequest([
+            'headers' => ['X-Inertia' => 'true'],
+        ]);
+
+        $this->get('/users/index');
+        $responseArray = json_decode($this->_getBodyAsString(), true);
+
+        $this->assertResponseOk();
+        $this->assertArrayHasKey('_csrfToken', $responseArray['props']);
+        $this->assertNotEmpty($responseArray['props']['_csrfToken']);
     }
 }

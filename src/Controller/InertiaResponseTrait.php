@@ -19,6 +19,8 @@ trait InertiaResponseTrait
         $this->setViewBuilderClass();
 
         $this->setFlashData();
+
+        $this->setCsrfToken();
     }
 
     /**
@@ -97,5 +99,15 @@ trait InertiaResponseTrait
 
             return $flash;
         });
+    }
+
+    /**
+     * Sets `_csrfToken` field to pass into every front-end component.
+     *
+     * @return void
+     */
+    private function setCsrfToken()
+    {
+        $this->set('_csrfToken', $this->getRequest()->getParam('_csrfToken'));
     }
 }
