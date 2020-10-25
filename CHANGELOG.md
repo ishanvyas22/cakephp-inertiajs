@@ -2,6 +2,16 @@
 
 ## [Unreleased](https://github.com/ishanvyas22/cakephp-inertiajs/compare/1.2.0...master)
 
+### Added
+- Sets `_csrfToken` field value by default so it can be used by front-end to pass this value while making form request to prevent CSRF ([#11](https://github.com/ishanvyas22/cakephp-inertiajs/pull/11))
+
+### Changed
+- Only first flash message will be set into `flash` key ([aefdd75](https://github.com/ishanvyas22/cakephp-inertiajs/commit/aefdd751dca75c9a043be929dfdfe720eda3d693))
+- Replace `/` with `-` in `flash.element` array, and lowercase whole element string ([c21beb8](https://github.com/ishanvyas22/cakephp-inertiajs/commit/c21beb8137a3ebcd2e8caa38e8448b49cf7eff1d))
+
+### Fixed
+- PHP notice when no flash message is set by returning empty flash array if flash data is not set into the session ([a75f9ef](https://github.com/ishanvyas22/cakephp-inertiajs/commit/a75f9ef74d86e982d3ffe850b13863c5fa4de52a))
+
 ## [1.2.0 (2020-10-25)](https://github.com/ishanvyas22/cakephp-inertiajs/compare/1.1.3...1.2.0)
 
 ### Added
