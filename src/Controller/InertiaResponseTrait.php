@@ -85,7 +85,7 @@ trait InertiaResponseTrait
         $session = $this->getRequest()->getSession();
 
         $this->set('flash', function () use ($session) {
-            $flash = $session->read('Flash.flash');
+            $flash = $session->read('Flash.flash.0');
 
             $session->delete('Flash');
 
