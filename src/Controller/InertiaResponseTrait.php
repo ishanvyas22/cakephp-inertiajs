@@ -81,10 +81,15 @@ trait InertiaResponseTrait
      */
     protected function setFlashData()
     {
+        /** @var \Cake\Http\Session */
         $session = $this->getRequest()->getSession();
 
-        $this->set('flash', $session->read('Flash.flash'));
+        $this->set('flash', function () use ($session) {
+            $flash = $session->read('Flash.flash');
 
-        $session->delete('Flash');
+            $session->delete('Flash');
+
+            return $flash;
+        });
     }
 }
