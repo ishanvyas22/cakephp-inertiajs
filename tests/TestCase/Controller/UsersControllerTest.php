@@ -135,12 +135,10 @@ class UsersControllerTest extends TestCase
         $this->assertResponseOk();
         $this->assertArrayHasKey('flash', $responseArray['props']);
         $this->assertEquals([
-            [
-                'message' => 'User saved successfully.',
-                'key' => 'flash',
-                'element' => 'Flash/success',
-                'params' => [],
-            ],
+            'message' => 'User saved successfully.',
+            'key' => 'flash',
+            'element' => 'flash-success',
+            'params' => [],
         ], $responseArray['props']['flash']);
     }
 
@@ -156,12 +154,10 @@ class UsersControllerTest extends TestCase
         $this->assertResponseOk();
         $this->assertArrayHasKey('flash', $responseArray['props']);
         $this->assertEquals([
-            [
-                'message' => 'Something went wrong!',
-                'key' => 'flash',
-                'element' => 'Flash/error',
-                'params' => [],
-            ],
+            'message' => 'Something went wrong!',
+            'key' => 'flash',
+            'element' => 'flash-error',
+            'params' => [],
         ], $responseArray['props']['flash']);
     }
 }

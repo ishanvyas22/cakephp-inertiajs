@@ -85,6 +85,10 @@ trait InertiaResponseTrait
         $session = $this->getRequest()->getSession();
 
         $this->set('flash', function () use ($session) {
+            if (! $session->check('Flash.flash.0')) {
+                return [];
+            }
+
             $flash = $session->read('Flash.flash.0');
 
             $flash['element'] = strtolower(str_replace('/', '-', $flash['element']));
