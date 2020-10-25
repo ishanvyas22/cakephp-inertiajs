@@ -1,6 +1,8 @@
 # Release Notes
 
-## [Unreleased](https://github.com/ishanvyas22/cakephp-inertiajs/compare/1.1.3...master)
+## [Unreleased](https://github.com/ishanvyas22/cakephp-inertiajs/compare/1.2.0...master)
+
+## [1.2.0 (2020-10-25)](https://github.com/ishanvyas22/cakephp-inertiajs/compare/1.1.3...1.2.0)
 
 ### Added
 - Set flash data automatically into view variables ([#9](https://github.com/ishanvyas22/cakephp-inertiajs/pull/9))
