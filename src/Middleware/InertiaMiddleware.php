@@ -1,34 +1,35 @@
 <?php
-declare(strict_types=1);
 
 namespace Inertia\Middleware;
 
+use Cake\Http\ServerRequest;
 use Inertia\Utility\Message;
+use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
-class InertiaMiddleware
+class InertiaMiddleware implements MiddlewareInterface
 {
     /**
      * Invoke method.
      *
-     * @param \Cake\Http\ServerRequest $request The request.
-     * @param \Cake\Http\Response $response The response.
-     * @param callable $next Callback to invoke the next middleware.
-     * @return \Cake\Http\Response A response
+     * @param \Psr\Http\Message\ServerRequestInterface $request The request.
+     * @param \Psr\Http\Server\RequestHandlerInterface $handler The request handler.
+     * @return \Psr\Http\Message\ResponseInterface A response.
      */
-    public function __invoke($request, $response, $next)
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if (! $request->hasHeader('X-Inertia')) {
-            return $next($request, $response);
+        if (!$request->hasHeader('X-Inertia')) {
+            return $handler->handle($request);
+        }
+        if ($request instanceof ServerRequest) {
+            $this->setupDetectors($request);
         }
 
-        $this->setupDetectors($request);
-
-        $response = $next($request, $response);
-
+        $response = $handler->handle($request);
         if (
-            $response instanceof ResponseInterface
-            && $response->getStatusCode() === Message::STATUS_FOUND
+            $response->getStatusCode() === Message::STATUS_FOUND
             && in_array($request->getMethod(), [Message::METHOD_PUT, Message::METHOD_PATCH, Message::METHOD_DELETE])
         ) {
             $response = $response->withStatus(Message::STATUS_SEE_OTHER);
@@ -45,7 +46,7 @@ class InertiaMiddleware
      * @param  \Cake\Http\ServerRequest $request The request.
      * @return void
      */
-    private function setupDetectors($request)
+    private function setupDetectors(ServerRequest $request): void
     {
         $request->addDetector('inertia', function ($request) {
             return $request->hasHeader('X-Inertia');
