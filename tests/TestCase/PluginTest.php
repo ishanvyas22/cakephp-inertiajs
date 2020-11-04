@@ -36,9 +36,10 @@ class PluginTest extends TestCase
 
         $middleware = $app->middleware($middleware);
 
-        $this->assertInstanceOf(ErrorHandlerMiddleware::class, $middleware->get(0));
-        $this->assertInstanceOf(AssetMiddleware::class, $middleware->get(1));
-        $this->assertInstanceOf(BodyParserMiddleware::class, $middleware->get(2));
-        $this->assertInstanceOf(RoutingMiddleware::class, $middleware->get(3));
+        $results = iterator_to_array($middleware);
+        $this->assertInstanceOf(ErrorHandlerMiddleware::class, $results[0]);
+        $this->assertInstanceOf(AssetMiddleware::class, $results[1]);
+        $this->assertInstanceOf(BodyParserMiddleware::class, $results[2]);
+        $this->assertInstanceOf(RoutingMiddleware::class, $results[3]);
     }
 }

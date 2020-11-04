@@ -2,7 +2,7 @@
 
 namespace Inertia\Controller;
 
-use Cake\Event\Event;
+use Cake\Event\EventInterface;
 use Inertia\Utility\Message;
 
 trait InertiaResponseTrait
@@ -10,7 +10,7 @@ trait InertiaResponseTrait
     /**
      * @inheritDoc
      */
-    public function beforeRender(Event $event)
+    public function beforeRender(EventInterface $event)
     {
         if ($this->isErrorStatus() || $this->isFailureStatus()) {
             return null;
@@ -108,6 +108,6 @@ trait InertiaResponseTrait
      */
     private function setCsrfToken()
     {
-        $this->set('_csrfToken', $this->getRequest()->getParam('_csrfToken'));
+        $this->set('_csrfToken', $this->getRequest()->getAttribute('csrfToken'));
     }
 }

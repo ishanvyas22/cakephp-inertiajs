@@ -5,6 +5,7 @@ use Cake\Core\Configure;
 use Cake\Core\Plugin;
 use Cake\Datasource\ConnectionManager;
 use Cake\Error\ExceptionRenderer;
+use Cake\Utility\Security;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -44,7 +45,7 @@ Configure::write('App', [
     'cssBaseUrl' => 'css/',
     'paths' => [
         'plugins' => [TEST_APP_DIR . 'plugins' . DS],
-        'templates' => [TEST_APP_DIR . 'src' . DS . 'Template' . DS],
+        'templates' => [TEST_APP_DIR . 'templates' . DS],
     ],
 ]);
 Configure::write('Error', [
@@ -82,5 +83,6 @@ $config = [
     'timezone' => 'UTC',
 ];
 ConnectionManager::setConfig('test', $config);
+Security::setSalt('a long value no one will guess ever');
 
 Plugin::getCollection()->add(new \Inertia\Plugin());

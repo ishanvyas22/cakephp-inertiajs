@@ -8,7 +8,7 @@ use Inertia\View\InertiaJsonView;
 
 class InertiaJsonViewTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

@@ -14,7 +14,7 @@ class InertiaJsonView extends JsonView
     /**
      * @inheritDoc
      */
-    public function render($view = null, $layout = null)
+    public function render(?string $view = null, $layout = null): string
     {
         $page = [
             'component' => $this->getComponentName(),
@@ -22,8 +22,8 @@ class InertiaJsonView extends JsonView
             'props' => $this->getProps(),
         ];
 
+        $this->setConfig('serialize', 'page');
         $this->set([
-            '_serialize' => 'page',
             'page' => $page,
         ]);
 

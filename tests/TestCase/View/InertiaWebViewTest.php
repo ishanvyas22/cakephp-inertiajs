@@ -8,7 +8,7 @@ use Inertia\View\InertiaWebView;
 
 class InertiaWebViewTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -23,8 +23,8 @@ class InertiaWebViewTest extends TestCase
 
         $result = $this->View->render();
 
-        $this->assertContains('<div id="app"', $result);
-        $this->assertContains(htmlentities('"props":{"user":{"id":1,"name":"John Doe"}}'), $result);
+        $this->assertStringContainsString('<div id="app"', $result);
+        $this->assertStringContainsString(htmlentities('"props":{"user":{"id":1,"name":"John Doe"}}'), $result);
     }
 
     public function testRendersComponentName()
@@ -34,6 +34,6 @@ class InertiaWebViewTest extends TestCase
 
         $result = $this->View->render();
 
-        $this->assertContains('&quot;Users\/Index&quot', $result);
+        $this->assertStringContainsString('&quot;Users\/Index&quot', $result);
     }
 }

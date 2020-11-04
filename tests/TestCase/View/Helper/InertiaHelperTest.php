@@ -23,23 +23,11 @@ class InertiaHelperTest extends TestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $view = new View();
         $this->Inertia = new InertiaHelper($view);
-    }
-
-    /**
-     * tearDown method
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        unset($this->Inertia);
-
-        parent::tearDown();
     }
 
     /**
@@ -62,8 +50,8 @@ class InertiaHelperTest extends TestCase
 
         $result = $this->Inertia->make($page, 'app', 'container');
 
-        $this->assertContains('<div id="app"', $result);
-        $this->assertContains('page="{&quot;component&quot;:&quot;Users', $result);
-        $this->assertContains('class="container"></div>', $result);
+        $this->assertStringContainsString('<div id="app"', $result);
+        $this->assertStringContainsString('page="{&quot;component&quot;:&quot;Users', $result);
+        $this->assertStringContainsString('class="container"></div>', $result);
     }
 }
