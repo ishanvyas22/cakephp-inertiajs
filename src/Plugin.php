@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Inertia;
 
@@ -28,7 +29,7 @@ class Plugin extends BasePlugin
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function bootstrap(PluginApplicationInterface $app): void
     {

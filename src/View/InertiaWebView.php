@@ -1,8 +1,9 @@
 <?php
+declare(strict_types=1);
+
 namespace Inertia\View;
 
 use Cake\View\View;
-use Inertia\View\BaseViewTrait;
 
 /**
  * Renders `Inertia./Inertia/app` view with provided view vars.

@@ -1,10 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace Inertia\Test;
 
 use Cake\Error\Middleware\ErrorHandlerMiddleware;
-use Cake\Http\MiddlewareQueue;
 use Cake\Http\Middleware\BodyParserMiddleware;
+use Cake\Http\MiddlewareQueue;
 use Cake\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\Middleware\RoutingMiddleware;
 use Cake\TestSuite\IntegrationTestTrait;

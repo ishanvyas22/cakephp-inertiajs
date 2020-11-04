@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Inertia\Controller;
 
@@ -83,7 +84,7 @@ trait InertiaResponseTrait
      */
     protected function setFlashData()
     {
-        /** @var \Cake\Http\Session */
+        /** @var \Cake\Http\Session $session */
         $session = $this->getRequest()->getSession();
 
         $this->set('flash', function () use ($session) {

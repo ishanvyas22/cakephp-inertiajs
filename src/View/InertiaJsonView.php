@@ -1,8 +1,9 @@
 <?php
+declare(strict_types=1);
+
 namespace Inertia\View;
 
 use Cake\View\JsonView;
-use Inertia\View\BaseViewTrait;
 
 /**
  * Returns json response with provided view vars.

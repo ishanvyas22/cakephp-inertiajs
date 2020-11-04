@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Inertia\Test\TestCase\View;
 
 use Cake\Http\Response;

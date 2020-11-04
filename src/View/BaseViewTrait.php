@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Inertia\View;
 
 use Cake\Routing\Router;
@@ -38,7 +40,7 @@ trait BaseViewTrait
         return sprintf(
             '%s/%s',
             $this->getRequest()->getParam('controller'),
-            ucwords($this->getRequest()->getParam('action'))
+            ucwords((string)$this->getRequest()->getParam('action'))
         );
     }
 
@@ -51,7 +53,7 @@ trait BaseViewTrait
     {
         $props = [];
         $only = $this->getPartialData();
-        $onlyViewVars = (! empty($only)) ? $only : array_keys($this->viewVars);
+        $onlyViewVars = ! empty($only) ? $only : array_keys($this->viewVars);
         $passedViewVars = $this->viewVars;
 
         $this->viewVars = [];
