@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Inertia\View\Helper;
 
 use Cake\View\Helper;
@@ -8,7 +10,6 @@ use Cake\View\Helper;
  */
 class InertiaHelper extends Helper
 {
-
     /**
      * Returns inertia div.
      *

@@ -1,8 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace Inertia\Controller;
 
-use Cake\Event\Event;
+use Cake\Event\EventInterface;
 use Inertia\Utility\Message;
 
 trait InertiaResponseTrait
@@ -10,7 +11,7 @@ trait InertiaResponseTrait
     /**
      * @inheritDoc
      */
-    public function beforeRender(Event $event)
+    public function beforeRender(EventInterface $event)
     {
         if ($this->isErrorStatus() || $this->isFailureStatus()) {
             return null;
@@ -83,7 +84,7 @@ trait InertiaResponseTrait
      */
     protected function setFlashData()
     {
-        /** @var \Cake\Http\Session */
+        /** @var \Cake\Http\Session $session */
         $session = $this->getRequest()->getSession();
 
         $this->set('flash', function () use ($session) {
@@ -108,6 +109,6 @@ trait InertiaResponseTrait
      */
     private function setCsrfToken()
     {
-        $this->set('_csrfToken', $this->getRequest()->getParam('_csrfToken'));
+        $this->set('_csrfToken', $this->getRequest()->getAttribute('csrfToken'));
     }
 }

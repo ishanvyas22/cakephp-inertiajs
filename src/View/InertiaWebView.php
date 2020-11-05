@@ -1,8 +1,9 @@
 <?php
+declare(strict_types=1);
+
 namespace Inertia\View;
 
 use Cake\View\View;
-use Inertia\View\BaseViewTrait;
 
 /**
  * Renders `Inertia./Inertia/app` view with provided view vars.
@@ -14,7 +15,7 @@ class InertiaWebView extends View
     /**
      * @inheritDoc
      */
-    public function initialize()
+    public function initialize(): void
     {
         $this->loadHelper('Inertia.Inertia');
         $this->loadHelper('AssetMix.AssetMix');
@@ -23,7 +24,7 @@ class InertiaWebView extends View
     /**
      * @inheritDoc
      */
-    public function render($view = null, $layout = null)
+    public function render(?string $view = null, $layout = null): string
     {
         $page = [
             'component' => $this->getComponentName(),

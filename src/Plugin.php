@@ -1,10 +1,12 @@
 <?php
+declare(strict_types=1);
 
 namespace Inertia;
 
 use AssetMix\Plugin as AssetMixPlugin;
 use Cake\Core\BasePlugin;
 use Cake\Core\PluginApplicationInterface;
+use Cake\Http\MiddlewareQueue;
 use Inertia\Middleware\InertiaMiddleware;
 
 /**
@@ -18,7 +20,7 @@ class Plugin extends BasePlugin
      * @param \Cake\Http\MiddlewareQueue $middleware The middleware queue to update.
      * @return \Cake\Http\MiddlewareQueue
      */
-    public function middleware($middleware)
+    public function middleware(MiddlewareQueue $middleware): MiddlewareQueue
     {
         // Add middleware here.
         $middleware->add(new InertiaMiddleware());
@@ -27,9 +29,9 @@ class Plugin extends BasePlugin
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
-    public function bootstrap(PluginApplicationInterface $app)
+    public function bootstrap(PluginApplicationInterface $app): void
     {
         parent::bootstrap($app);
 

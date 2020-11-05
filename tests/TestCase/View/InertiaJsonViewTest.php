@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Inertia\Test\TestCase\View;
 
 use Cake\Http\Response;
@@ -8,7 +10,7 @@ use Inertia\View\InertiaJsonView;
 
 class InertiaJsonViewTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

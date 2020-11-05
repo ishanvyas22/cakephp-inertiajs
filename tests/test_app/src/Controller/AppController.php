@@ -1,16 +1,17 @@
 <?php
+declare(strict_types=1);
 
 namespace TestApp\Controller;
 
 use Cake\Controller\Controller;
-use Cake\Event\Event;
+use Cake\Event\EventInterface;
 use Inertia\Controller\InertiaResponseTrait;
 
 class AppController extends Controller
 {
     use InertiaResponseTrait;
 
-    public function initialize()
+    public function initialize(): void
     {
         parent::initialize();
 
@@ -20,7 +21,7 @@ class AppController extends Controller
         $this->loadComponent('Flash');
     }
 
-    public function beforeFilter(Event $event)
+    public function beforeFilter(EventInterface $event)
     {
         parent::beforeFilter($event);
 
