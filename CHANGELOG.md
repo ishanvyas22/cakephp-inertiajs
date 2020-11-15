@@ -1,9 +1,15 @@
 # Release Notes
 
-## [Unreleased](https://github.com/ishanvyas22/cakephp-inertiajs/compare/1.3.0...cake3)
+## [Unreleased](https://github.com/ishanvyas22/cakephp-inertiajs/compare/1.3.1...cake3)
+
+## [1.3.1 (2020-11-15)](https://github.com/ishanvyas22/cakephp-inertiajs/compare/1.3.0...1.3.1)
 
 ### Changed
-- Move CI to github actions
+- Move CI to github actions ([f4c77dd](https://github.com/ishanvyas22/cakephp-inertiajs/commit/f4c77dd5a058e39093683c88d94aa6bc580c384d))
+- Improve docs ([#15](https://github.com/ishanvyas22/cakephp-inertiajs/pull/15))
+
+### Fixed
+- Example code in docs ([#16](https://github.com/ishanvyas22/cakephp-inertiajs/pull/16))
 
 ## [1.3.0 (2020-10-25)](https://github.com/ishanvyas22/cakephp-inertiajs/compare/1.2.0...1.3.0)
 
