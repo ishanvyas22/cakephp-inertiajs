@@ -7,6 +7,7 @@
 
 ### Changed
 - CakePHP badge to use CakePHP 4.x ([b73bb99](https://github.com/ishanvyas22/cakephp-inertiajs/commit/b73bb99656b9716aafdc17591605f8edb2b92d4b))
+- Move CI to github actions
 
 ### Fixed
 - Example code in the `docs/ServerSideSetup.md` file ([#14](https://github.com/ishanvyas22/cakephp-inertiajs/pull/14))
