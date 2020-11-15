@@ -12,7 +12,7 @@ As described in official documentation,
 
 > With Inertia, each page in your application has its own controller and corresponding JavaScript component. This allows you to retrieve just the data necessary for that page, no API required.
 
-So to create new page you need to a create a JavaScript component into `assets/js/` folder matching CakePHP convention. For example, the `index` method of a `ArticlesController` would use `assets/js/Pages/Articles/Index.vue` as its view component.
+So to create new page you need to create a JavaScript component into `assets/js/` folder matching CakePHP convention. For example, the `index` method of a `ArticlesController` would use `assets/js/Pages/Articles/Index.vue` as its view component.
 
 Refer official documentation for more info: https://inertiajs.com/pages#creating-pages
 
