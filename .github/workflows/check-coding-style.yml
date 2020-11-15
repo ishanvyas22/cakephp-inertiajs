@@ -46,7 +46,7 @@ jobs:
 
     - name: Install dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
-      run: composer install --no-interaction --no-suggest
+      run: composer install --no-interaction
 
     - name: Run cs check command
       run: composer cs-check
