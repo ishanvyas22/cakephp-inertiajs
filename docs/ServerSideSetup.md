@@ -77,6 +77,7 @@ So instead you should do like this:
 namespace App\Controller;
 
 use Cake\Controller\Controller;
+use Cake\Event\EventInterface;
 use Inertia\Controller\InertiaResponseTrait;
 
 class AppController extends Controller
@@ -86,9 +87,9 @@ class AppController extends Controller
         beforeRender as protected inertiaBeforeRender;
     }
 
-    public function beforeRender(Event $event)
+    public function beforeRender(EventInterface $event)
     {
-        static::inertiaBeforeRender($event);
+        $this->inertiaBeforeRender($event);
 
         // Do your customization here.
     }
