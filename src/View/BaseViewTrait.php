@@ -13,7 +13,7 @@ trait BaseViewTrait
      *
      * @return string
      */
-    private function getCurrentUri()
+    private function getCurrentUri(): string
     {
         return Router::url($this->getRequest()->getRequestTarget(), true);
     }
@@ -27,7 +27,7 @@ trait BaseViewTrait
      *
      * @return string
      */
-    private function getComponentName()
+    private function getComponentName(): string
     {
         if ($this->get('component') !== null) {
             $component = $this->get('component');
@@ -49,7 +49,7 @@ trait BaseViewTrait
      *
      * @return array
      */
-    private function getProps()
+    private function getProps(): array
     {
         $props = [];
         $only = $this->getPartialData();
@@ -80,7 +80,7 @@ trait BaseViewTrait
      *
      * @return array
      */
-    public function getPartialData()
+    public function getPartialData(): array
     {
         if (! $this->getRequest()->is('inertia-partial-data')) {
             return [];

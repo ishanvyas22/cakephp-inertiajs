@@ -29,7 +29,7 @@ trait InertiaResponseTrait
      *
      * @return void
      */
-    private function setViewBuilderClass()
+    private function setViewBuilderClass(): void
     {
         $viewClass = 'InertiaWeb';
         if ($this->getRequest()->is('inertia')) {
@@ -44,7 +44,7 @@ trait InertiaResponseTrait
      *
      * @return bool Returns true if response is error, false otherwise.
      */
-    private function isErrorStatus()
+    private function isErrorStatus(): bool
     {
         $statusCode = $this->getResponse()->getStatusCode();
         $errorCodes = [
@@ -63,7 +63,7 @@ trait InertiaResponseTrait
      *
      * @return bool Returns true if response is failure, false otherwise.
      */
-    private function isFailureStatus()
+    private function isFailureStatus(): bool
     {
         $statusCode = $this->getResponse()->getStatusCode();
         $failureCodes = [
@@ -82,7 +82,7 @@ trait InertiaResponseTrait
      *
      * @return void
      */
-    protected function setFlashData()
+    protected function setFlashData(): void
     {
         /** @var \Cake\Http\Session $session */
         $session = $this->getRequest()->getSession();
@@ -107,7 +107,7 @@ trait InertiaResponseTrait
      *
      * @return void
      */
-    private function setCsrfToken()
+    private function setCsrfToken(): void
     {
         $this->set('_csrfToken', $this->getRequest()->getAttribute('csrfToken'));
     }

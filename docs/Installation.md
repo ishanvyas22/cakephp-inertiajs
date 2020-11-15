@@ -15,10 +15,14 @@
 3. Generate Client-side scaffolding (Inertia.js + Vue.js)
 
     ```bash
+    # Generate vue scaffolding. You can also use (react) here.
     bin/cake asset_mix generate inertia-vue
+
+    # Install javascript tooling and dependencies.
+    npm install
     ```
 
-    **Note:** In order to use Inertia.js, you will need any one of [Client-side adapters](ClientSideSetup.md).
+    **Note:** In order to use Inertia.js, you will need one of [Client-side adapters](ClientSideSetup.md).
 
 4. Just add below line into your layout(`Template/Layout/default.ctp`) file
 
@@ -26,7 +30,7 @@
     echo $this->AssetMix->script('app');
     ```
 
-    So your layout file will look something like this:
+    Your layout file should look something like this:
 
     ```php
     <!DOCTYPE html>
