@@ -33,4 +33,4 @@ If you are facing a problem with this plugin or found any bug, please open an is
 **or** [Paypal me](https://paypal.me/IshanVyas?locale.x=en_GB)
 
 ## License
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
