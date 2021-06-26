@@ -1,5 +1,12 @@
 version = 1
 
+test_patterns = ["tests/**"]
+
+exclude_patterns = [
+  "docs/**",
+  "templates/**"
+]
+
 [[analyzers]]
 name = "php"
 enabled = true
