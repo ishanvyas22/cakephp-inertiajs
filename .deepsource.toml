@@ -4,7 +4,8 @@ test_patterns = ["tests/**"]
 
 exclude_patterns = [
   "docs/**",
-  "templates/**"
+  "templates/**",
+  "tests/test_app/**"
 ]
 
 [[analyzers]]
