@@ -10,16 +10,7 @@
 
 CakePHP server side adapter for [Inertia.js](https://inertiajs.com/) to build single-page apps, without building an API.
 
-## Installation and Usage
-
-See [documentation](docs/README.md)
-
-## Reporting Issues
-
-If you are facing a problem with this plugin or found any bug, please open an issue on [GitHub](https://github.com/ishanvyas22/cakephp-inertiajs/issues).
-
-## ❤️  Support The Development
-
+## ❤️ Support The Development
 **Do you like this project? Support it by donating:**
 
 <a href="https://www.buymeacoffee.com/ishanvyas" target="_blank">
@@ -31,6 +22,22 @@ If you are facing a problem with this plugin or found any bug, please open an is
 </a>
 
 **or** [Paypal me](https://paypal.me/IshanVyas?locale.x=en_GB)
+
+**or** [![Contact me on Codementor](https://www.codementor.io/m-badges/isvyas/get-help.svg)](https://www.codementor.io/@isvyas?refer=badge)
+
+### Follow me
+- [GitHub](https://github.com/ishanvyas22)
+- [Instagram](https://www.instagram.com/ishancodes)
+- [LinkedIn](https://www.linkedin.com/in/ishan-vyas-314111112)
+- [Twitter](https://twitter.com/ishanvyas22)
+
+## Installation and Usage
+
+See [documentation](docs/README.md)
+
+## Reporting Issues
+
+If you are facing a problem with this plugin or found any bug, please open an issue on [GitHub](https://github.com/ishanvyas22/cakephp-inertiajs/issues).
 
 ## License
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
