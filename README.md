@@ -10,6 +10,10 @@
 
 CakePHP server side adapter for [Inertia.js](https://inertiajs.com/) to build single-page apps, without building an API.
 
+## Installation and Usage
+
+See [documentation](docs/README.md)
+
 ## ❤️ Support The Development
 **Do you like this project? Support it by donating:**
 
@@ -30,10 +34,6 @@ CakePHP server side adapter for [Inertia.js](https://inertiajs.com/) to build si
 - [Instagram](https://www.instagram.com/ishancodes)
 - [LinkedIn](https://www.linkedin.com/in/ishan-vyas-314111112)
 - [Twitter](https://twitter.com/ishanvyas22)
-
-## Installation and Usage
-
-See [documentation](docs/README.md)
 
 ## Reporting Issues
 
