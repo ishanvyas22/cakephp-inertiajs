@@ -1,13 +1,13 @@
 <?php
 
-use Cake\Routing\Route\DashedRoute;
-use Cake\Routing\RouteBuilder;
-use Cake\Routing\Router;
+    use Cake\Routing\Route\DashedRoute;
+    use Cake\Routing\RouteBuilder;
 
-Router::plugin(
-    'Inertia',
-    ['path' => '/inertia'],
-    function (RouteBuilder $routes) {
-        $routes->fallbacks(DashedRoute::class);
-    }
-);
+    /** @var RouteBuilder $routes */
+    $routes->plugin(
+        'Inertia',
+        ['path' => '/inertia'],
+        function (RouteBuilder $routes) {
+            $routes->fallbacks(DashedRoute::class);
+        }
+    );
