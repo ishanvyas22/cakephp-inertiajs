@@ -60,6 +60,13 @@ Now you are all set to start using your front-end components as template files. 
 
 **Note:** If you've created fresh CakePHP project, you must have to create `Display.vue` component into `assets/js/Pages/Pages` directory. See [this](ClientSideSetup.md) link for more info.
 
+## Version map
+
+Plugin version | Branch | CakePHP version | PHP minimum version |
+--- | --- | --- | --- |
+2.x | master | >=4.0.0 | >=7.2 |
+1.x | cake3 | >=3.5.0 | >=5.6 |
+
 ---
 
 [< Index](README.md) | [Usage >](ServerSideSetup.md)
