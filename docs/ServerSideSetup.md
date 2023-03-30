@@ -26,9 +26,9 @@ class AppController extends Controller
 
 A Root template is a file that will be loaded on the first page visit. This will be used to load your site assets (CSS and JavaScript), and will also contain a root `<div>` to boot your JavaScript application in. For more info visit [this link](https://inertiajs.com/server-side-setup#root-template).
 
-By default, it will use the plugin's `Template/Inertia/app.ctp` file as root template.
+By default, it will use the plugin's `Template/Inertia/app.php` file as root template.
 
-If you want to override this, read [Overriding Plugin Templates from Inside Your Application](https://book.cakephp.org/3/en/plugins.html#overriding-plugin-templates-from-inside-your-application) section from cookbook. After creating the template file, you can use [`InertiaHelper`](https://github.com/ishanvyas22/cakephp-inertiajs/blob/master/src/View/Helper/InertiaHelper.php#L20) to quickly generate a `<div>` element.
+If you want to override this, read [Overriding Plugin Templates from Inside Your Application](https://book.cakephp.org/4/en/plugins.html#overriding-plugin-templates-from-inside-your-application) section from cookbook. After creating the template file, you can use [`InertiaHelper`](https://github.com/ishanvyas22/cakephp-inertiajs/blob/master/src/View/Helper/InertiaHelper.php#L20) to quickly generate a `<div>` element.
 
 ```php
 <?php
