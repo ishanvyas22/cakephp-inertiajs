@@ -33,5 +33,10 @@
         "cs-check": "phpcs -p --extensions=php ./src ./tests",
         "analyse": "phpstan analyse --ansi --memory-limit=-1",
         "test": "phpunit --colors=always"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     }
 }
