@@ -13,7 +13,8 @@ jobs:
 
     strategy:
       matrix:
-        php-versions: ['7.2', '7.4']
+        php-versions: ['7.4', '8.1']
+        composer-type: [lowest, stable, dev]
 
     steps:
     - name: Checkout
@@ -34,9 +35,9 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ${{ steps.composer-cache.outputs.dir }}
-        key: ${{ runner.os }}-${{ github.ref }}-composer-${{ steps.key-date.outputs.date }}-${{ hashFiles('composer.json') }}
+        key: ${{ runner.os }}-${{ github.ref }}-composer-${{ steps.key-date.outputs.date }}-${{ hashFiles('composer.json') }}-${{ matrix.composer-type }}
         restore-keys: |
-          ${{ runner.os }}-${{ github.ref }}-composer-${{ steps.key-date.outputs.date }}-${{ hashFiles('composer.json') }}
+          ${{ runner.os }}-${{ github.ref }}-composer-${{ steps.key-date.outputs.date }}-${{ hashFiles('composer.json') }}-${{ matrix.composer-type }}
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
@@ -46,7 +47,14 @@ jobs:
 
     - name: Install dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
-      run: composer install --no-interaction
+      run: |
+        if [[ ${{ matrix.composer-type }} == 'lowest' ]]; then
+          composer update --prefer-dist --no-progress --no-interaction --prefer-stable --prefer-lowest
+        elif [[ ${{ matrix.composer-type }} == 'stable' ]]; then
+          composer update --prefer-dist --no-progress --no-interaction --prefer-stable
+        else
+          composer update --prefer-dist --no-progress --no-interaction
+        fi
 
     - name: Run tests
       run: composer test
