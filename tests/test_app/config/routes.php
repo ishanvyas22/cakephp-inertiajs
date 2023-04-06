@@ -5,9 +5,9 @@ use Cake\Routing\Route\DashedRoute;
 use Cake\Routing\RouteBuilder;
 use Cake\Routing\Router;
 
-Router::reload();
+/** @var \Cake\Routing\RouteBuilder $routes */
 
-Router::scope('/', function (RouteBuilder $routes) {
+$routes->scope('/', function (RouteBuilder $routes) {
     // Register scoped middleware for in scopes.
     $routes->registerMiddleware('csrf', new CsrfProtectionMiddleware([
         'httponly' => true,

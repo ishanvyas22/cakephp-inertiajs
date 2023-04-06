@@ -51,7 +51,6 @@ Configure::write('App', [
 ]);
 Configure::write('Error', [
     'errorLevel' => E_ALL,
-    'exceptionRenderer' => ExceptionRenderer::class,
     'skipLog' => [],
     'log' => true,
     'trace' => true,
