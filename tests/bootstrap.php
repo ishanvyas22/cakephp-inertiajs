@@ -5,7 +5,6 @@ use Cake\Cache\Cache;
 use Cake\Core\Configure;
 use Cake\Core\Plugin;
 use Cake\Datasource\ConnectionManager;
-use Cake\Error\ExceptionRenderer;
 use Cake\Utility\Security;
 
 require_once __DIR__ . '/../vendor/autoload.php';

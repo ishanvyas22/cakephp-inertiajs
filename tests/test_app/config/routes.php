@@ -3,7 +3,6 @@
 use Cake\Http\Middleware\CsrfProtectionMiddleware;
 use Cake\Routing\Route\DashedRoute;
 use Cake\Routing\RouteBuilder;
-use Cake\Routing\Router;
 
 /** @var \Cake\Routing\RouteBuilder $routes */
 
