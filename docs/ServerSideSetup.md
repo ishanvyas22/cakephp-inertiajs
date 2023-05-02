@@ -110,6 +110,53 @@ $this->Flash->success('It worked!');
 
 That's it! The flash data will automatically pass to component as a `Array` for you to use.
 
+### Integrating Inertia into an Existing CakePHP Application
+
+To integrate Inertia into an existing CakePHP application you may want to use CakePHP elements such as HTML dynamic menus on part of the page while the Inertia Vue|React frontend components look after the rest of the page. 
+
+To enable this you need to tell the Inertia plugin NOT to bundle some variables needed by CakePHP elements by setting the `nonInertiaVars` view option.
+
+In a Controller Action or `beforeRender` method set the `nonInertiaVars` option to a string for a single variable or an array of variable names (see example below).
+
+Inertia will not bundle the view variables specified in `nonInertiaVars` into the Inertia div and they will be available to the CakePHP layouts and templates you are using to load the Inertia `div`.
+
+
+```php
+   // in a controller action or beforeRender method
+    public function index()
+    {
+        // these are the Inertia variables
+        $this->set('users', $this->Users->find()->toArray());
+        $this->set('edit_route', Router::pathUrl('Users::edit'));
+        $this->set('component', 'Users/Listing');
+
+        // these are CakePHP layout / template view variables
+        $this->set('companyName', 'My Company Name');
+        $this->set('isAdmin', true);
+        $this->set('loggedInUser',  $this->Authentication->getIdentity());
+
+        // specify either an array of variables
+        $this->viewBuilder()->setOption(
+            'nonInertiaVars',
+            [
+                "companyName",
+                'isAdmin',
+                'loggedInUser'
+            ]
+        );
+
+        // or a single field name
+        // $this->viewBuilder()->setOption('nonInertiaVars', 'loggedInUser');
+    }
+ 
+
+```
+
+
+
+
+
+
 ---
 
 [< Installation](Installation.md) | [Client-side Setup >](ClientSideSetup.md)

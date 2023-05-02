@@ -24,9 +24,8 @@ class InertiaJsonView extends JsonView
         ];
 
         $this->setConfig('serialize', 'page');
-        $this->set([
-            'page' => $page,
-        ]);
+
+        $this->set(compact('page'));
 
         return parent::render($view, $layout);
     }

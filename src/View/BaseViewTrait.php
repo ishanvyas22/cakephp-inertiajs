@@ -53,13 +53,20 @@ trait BaseViewTrait
     {
         $props = [];
         $only = $this->getPartialData();
-        $onlyViewVars = ! empty($only) ? $only : array_keys($this->viewVars);
+        $onlyViewVars = !empty($only) ? $only : array_keys($this->viewVars);
         $passedViewVars = $this->viewVars;
 
-        $this->viewVars = [];
+        $nonInertiaProps = $this->getConfig('_nonInertiaProps') ?? [];
+
+        $onlyViewVars = array_diff($onlyViewVars, $nonInertiaProps);
+
+        $this->viewVars = array_intersect_key(
+            $passedViewVars,
+            array_flip($nonInertiaProps)
+        );
 
         foreach ($onlyViewVars as $varName) {
-            if (! isset($passedViewVars[$varName])) {
+            if (!isset($passedViewVars[$varName])) {
                 continue;
             }
 
@@ -76,13 +83,44 @@ trait BaseViewTrait
     }
 
     /**
+     * Any viewVars that should not be included in Inertia `page`
+     * are set here
+     *
+     * @param mixed $props The view vars
+     * @param mixed $nonInertiaVars Array of non Inertia Vars
+     * @return array
+     */
+    private function setNonInertiaVars($props, $nonInertiaVars): array
+    {
+        if (!is_array($nonInertiaVars)) {
+            $nonInertiaVars = [$nonInertiaVars];
+        }
+
+        $notInertiaProps = [];
+
+        foreach ($nonInertiaVars as $prop) {
+            if (isset($props[$prop])) {
+                $this->set($prop, $props[$prop]);
+
+                $notInertiaProps[] = $prop;
+            }
+        }
+
+        // remove the notInertiaVars so they don't appear in Inertia `page`
+        return array_diff_key(
+            $props,
+            array_flip($notInertiaProps)
+        );
+    }
+
+    /**
      * Returns view variable names from `X-Inertia-Partial-Data` header.
      *
      * @return array
      */
     public function getPartialData(): array
     {
-        if (! $this->getRequest()->is('inertia-partial-data')) {
+        if (!$this->getRequest()->is('inertia-partial-data')) {
             return [];
         }
 
