@@ -27,7 +27,8 @@ trait InertiaResponseTrait
     }
 
     /**
-     * Sets _nonInertiaProps option to view so they wont be included in page
+     * Sets array of view variables for Inertia to ignore for use
+     * by Non-Inertia view elements
      *
      * @return void
      */
@@ -43,7 +44,8 @@ trait InertiaResponseTrait
             $nonInertiaProps = [$nonInertiaProps];
         }
 
-        $this->viewbuilder()->setOption('_nonInertiaProps', $nonInertiaProps);
+        $this->viewbuilder()
+            ->setOption('_nonInertiaProps', $nonInertiaProps);
     }
 
     /**

@@ -45,6 +45,36 @@ trait BaseViewTrait
     }
 
     /**
+     * Returns an array of Inertia var names and sets Non Inertia Vars for use by View
+     *
+     * @param mixed $only Partial Data
+     * @param mixed $passedViewVars Associative array of all passed ViewVars and their values
+     * @return array
+     */
+    private function filterViewVars($only, $passedViewVars): array
+    {
+        $onlyViewVars = !empty($only) ? $only : array_keys($passedViewVars);
+
+        $nonInertiaProps = $this->getConfig('_nonInertiaProps') ?? [];
+
+        /**
+         * Selects the Non-Inertia Vars to be available
+         * for use outside of Inertia Components
+         */
+        $this->viewVars = array_intersect_key(
+            $passedViewVars,
+            array_flip($nonInertiaProps)
+        );
+
+        /**
+         * Returns an array of the vars names which will be
+         * packaged into the Inertia `page` view var
+         */
+
+        return array_diff($onlyViewVars, $nonInertiaProps);
+    }
+
+    /**
      * Returns `props` array excluding the default variables.
      *
      * @return array
@@ -52,18 +82,12 @@ trait BaseViewTrait
     private function getProps(): array
     {
         $props = [];
+
         $only = $this->getPartialData();
-        $onlyViewVars = !empty($only) ? $only : array_keys($this->viewVars);
+
         $passedViewVars = $this->viewVars;
 
-        $nonInertiaProps = $this->getConfig('_nonInertiaProps') ?? [];
-
-        $onlyViewVars = array_diff($onlyViewVars, $nonInertiaProps);
-
-        $this->viewVars = array_intersect_key(
-            $passedViewVars,
-            array_flip($nonInertiaProps)
-        );
+        $onlyViewVars = $this->filterViewVars($only, $passedViewVars);
 
         foreach ($onlyViewVars as $varName) {
             if (!isset($passedViewVars[$varName])) {
@@ -80,37 +104,6 @@ trait BaseViewTrait
         }
 
         return $props;
-    }
-
-    /**
-     * Any viewVars that should not be included in Inertia `page`
-     * are set here
-     *
-     * @param mixed $props The view vars
-     * @param mixed $nonInertiaVars Array of non Inertia Vars
-     * @return array
-     */
-    private function setNonInertiaVars($props, $nonInertiaVars): array
-    {
-        if (!is_array($nonInertiaVars)) {
-            $nonInertiaVars = [$nonInertiaVars];
-        }
-
-        $notInertiaProps = [];
-
-        foreach ($nonInertiaVars as $prop) {
-            if (isset($props[$prop])) {
-                $this->set($prop, $props[$prop]);
-
-                $notInertiaProps[] = $prop;
-            }
-        }
-
-        // remove the notInertiaVars so they don't appear in Inertia `page`
-        return array_diff_key(
-            $props,
-            array_flip($notInertiaProps)
-        );
     }
 
     /**

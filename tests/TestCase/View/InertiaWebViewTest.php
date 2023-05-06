@@ -19,7 +19,11 @@ class InertiaWebViewTest extends TestCase
 
         $request = new ServerRequest();
         $response = new Response();
-        $this->View = new InertiaWebView($request, $response);
+
+        $this->View = (new ViewBuilder())
+            ->setClassName('Inertia\View\InertiaWebView')
+            ->setOption('_nonInertiaProps', ['one', 'two', 'three'])
+            ->build([], $request, $response);
     }
 
     public function testRendersDivWithIdAppAttribute()
@@ -42,21 +46,8 @@ class InertiaWebViewTest extends TestCase
         $this->assertStringContainsString('&quot;Users\/Index&quot', $result);
     }
 
-    public function createViewBuilderForPassThru()
-    {
-        $request = new ServerRequest();
-        $response = new Response();
-
-        $this->View = (new ViewBuilder())
-            ->setClassName('Inertia\View\InertiaWebView')
-            ->setOption('_nonInertiaProps', ['one', 'two', 'three'])
-            ->build([], $request, $response);
-    }
-
     public function testItCanPassthruVarsToCake()
     {
-        $this->createViewBuilderForPassThru();
-
         $this->View->set('component', 'Users/Index');
         $this->View->set('user', ['id' => 1, 'name' => 'John Doe']);
         $this->View->set('one', 1);
