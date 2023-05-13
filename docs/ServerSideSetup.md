@@ -107,8 +107,58 @@ To pass flash data into the front-end component, you simply have to set flash me
 ```php
 $this->Flash->success('It worked!');
 ```
-
 That's it! The flash data will automatically pass to component as a `Array` for you to use.
+
+### Integrating Inertia with CakePHP layout and template elements
+
+To include a mix of legacy CakePHP elements (such as a menu system) with Inertia components tell Inertia which view variables NOT to include in the root Inertia `div` using the `$_nonInteriaProps` class property
+
+In `AppController` (to globally set the Non-Interia vars) or a child that inherits from it (to make the change per Controller) set the `$_nonInertiaProps` class property to an array of View Vars:
+
+
+```php
+<?php
+
+namespace App\Controller;
+
+use Cake\Core\Configure
+use Cake\Event\EventInterface;
+use Inertia\Controller\InertiaResponseTrait;
+
+class ExamplesController extends AppController
+{
+    // use a class property
+    protected array $_nonInertiaProps = [
+            'menu',
+            'user'
+    ];
+
+    // Or read from your configuration 
+    // in the `initialize` method
+    // public function initialize(): void
+    // {
+    //     parent::initialize();
+    //
+    //     $this->_nonInertiaProps = Configure::read('NON_INERTIA_PROPS')
+    // }
+
+    // See `Customize beforeRender hook` regarding further customization
+
+    public function index() {
+        // menu array
+        $menu = $this->Examples->Menus->find('threaded');
+
+        // user info to display logged in user in menu
+        $user = $this->Authentication->getIndentity();
+
+        $examples = $this->Examples->find('all);
+
+        // `menu` and `user` will be available to CakePHP view elements
+        // `examples` will be available to Inertia Components
+        $this->set(compact('menu', 'user', 'examples'));
+    }
+}
+```
 
 ---
 

@@ -22,6 +22,30 @@ trait InertiaResponseTrait
         $this->setFlashData();
 
         $this->setCsrfToken();
+
+        $this->setNonInertiaProps();
+    }
+
+    /**
+     * Sets array of view variables for Inertia to ignore for use
+     * by Non-Inertia view elements
+     *
+     * @return void
+     */
+    private function setNonInertiaProps(): void
+    {
+        if (!property_exists($this, '_nonInertiaProps')) {
+            return;
+        }
+
+        $nonInertiaProps = $this->_nonInertiaProps;
+
+        if (is_string($nonInertiaProps)) {
+            $nonInertiaProps = [$nonInertiaProps];
+        }
+
+        $this->viewbuilder()
+            ->setOption('_nonInertiaProps', $nonInertiaProps);
     }
 
     /**
@@ -88,7 +112,7 @@ trait InertiaResponseTrait
         $session = $this->getRequest()->getSession();
 
         $this->set('flash', function () use ($session) {
-            if (! $session->check('Flash.flash.0')) {
+            if (!$session->check('Flash.flash.0')) {
                 return [];
             }
 
