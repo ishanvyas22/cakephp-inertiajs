@@ -47,11 +47,11 @@ trait BaseViewTrait
     /**
      * Returns an array of Inertia var names and sets Non Inertia Vars for use by View
      *
-     * @param mixed $only Partial Data
-     * @param mixed $passedViewVars Associative array of all passed ViewVars and their values
+     * @param array $only Partial Data
+     * @param array $passedViewVars Associative array of all passed ViewVars and their values
      * @return array
      */
-    private function filterViewVars($only, $passedViewVars): array
+    private function filterViewVars(array $only, array $passedViewVars): array
     {
         $onlyViewVars = !empty($only) ? $only : array_keys($passedViewVars);
 

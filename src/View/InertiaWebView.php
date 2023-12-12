@@ -24,7 +24,7 @@ class InertiaWebView extends View
     /**
      * @inheritDoc
      */
-    public function render(?string $view = null, $layout = null): string
+    public function render(?string $view = null, string|false|null $layout = null): string
     {
         $page = [
             'component' => $this->getComponentName(),

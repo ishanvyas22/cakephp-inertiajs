@@ -11,7 +11,7 @@ trait InertiaResponseTrait
     /**
      * @inheritDoc
      */
-    public function beforeRender(EventInterface $event)
+    public function beforeRender(EventInterface $event): mixed
     {
         if ($this->isErrorStatus() || $this->isFailureStatus()) {
             return null;

@@ -18,7 +18,7 @@ class InertiaHelper extends Helper
      * @param  string $class Class attribute of the div.
      * @return string
      */
-    public function make($pageData, $id = 'app', $class = ''): string
+    public function make(array $pageData, string $id = 'app', string $class = ''): string
     {
         $encodedPageData = json_encode($pageData);
 

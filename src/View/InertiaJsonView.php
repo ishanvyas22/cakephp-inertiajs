@@ -15,7 +15,7 @@ class InertiaJsonView extends JsonView
     /**
      * @inheritDoc
      */
-    public function render(?string $view = null, $layout = null): string
+    public function render(?string $view = null, string|false|null $layout = null): string
     {
         $page = [
             'component' => $this->getComponentName(),
