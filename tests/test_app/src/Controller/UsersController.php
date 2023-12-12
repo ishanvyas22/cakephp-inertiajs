@@ -58,7 +58,7 @@ class UsersController extends AppController
 
     public function internalServerError()
     {
-        echo $fail;
+        throw new \Exception();
     }
 
     public function setSuccessFlash()
