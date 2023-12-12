@@ -8,7 +8,7 @@
         "ishanvyas22/asset-mix": "dev-cake5"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.5.23",
+        "phpunit/phpunit": "^10.2",
         "cakephp/cakephp-codesniffer": "^4.2",
         "phpstan/phpstan": "^0.12.37"
     },
