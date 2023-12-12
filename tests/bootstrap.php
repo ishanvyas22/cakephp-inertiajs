@@ -6,6 +6,7 @@ use Cake\Core\Configure;
 use Cake\Core\Plugin;
 use Cake\Datasource\ConnectionManager;
 use Cake\Utility\Security;
+use Inertia\InertiaPlugin;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -84,4 +85,4 @@ $config = [
 ConnectionManager::setConfig('test', $config);
 Security::setSalt('a long value no one will guess ever');
 
-Plugin::getCollection()->add(new \Inertia\Plugin());
+Plugin::getCollection()->add(new InertiaPlugin());
