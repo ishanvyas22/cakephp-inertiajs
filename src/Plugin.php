@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Inertia;
 
-use AssetMix\Plugin as AssetMixPlugin;
+use AssetMix\AssetMixPlugin;
 use Cake\Core\BasePlugin;
 use Cake\Core\PluginApplicationInterface;
 use Cake\Http\MiddlewareQueue;
