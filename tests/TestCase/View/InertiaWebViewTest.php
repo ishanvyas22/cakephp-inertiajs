@@ -66,8 +66,6 @@ class InertiaWebViewTest extends TestCase
 
         $this->assertEquals($expected, $actual);
 
-        $result = $this->View->render();
-
         $actual = $this->View->getVars();
 
         $expected = [

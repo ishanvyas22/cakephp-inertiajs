@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace TestApp\Controller;
 
+use Exception;
+
 class UsersController extends AppController
 {
     public function index()
@@ -58,7 +60,7 @@ class UsersController extends AppController
 
     public function internalServerError()
     {
-        throw new \Exception();
+        throw new Exception();
     }
 
     public function setSuccessFlash()

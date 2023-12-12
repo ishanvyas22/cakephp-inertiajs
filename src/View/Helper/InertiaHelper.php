@@ -13,9 +13,9 @@ class InertiaHelper extends Helper
     /**
      * Returns inertia div.
      *
-     * @param  array $pageData Page data to set into component.
-     * @param  string $id Id attribute of the div.
-     * @param  string $class Class attribute of the div.
+     * @param array $pageData Page data to set into component.
+     * @param string $id Id attribute of the div.
+     * @param string $class Class attribute of the div.
      * @return string
      */
     public function make(array $pageData, string $id = 'app', string $class = ''): string
