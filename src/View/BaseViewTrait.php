@@ -34,12 +34,12 @@ trait BaseViewTrait
 
             unset($this->viewVars['component']);
 
-            return $component;
+            return (string)$component;
         }
 
         return sprintf(
             '%s/%s',
-            $this->getRequest()->getParam('controller'),
+            (string)$this->getRequest()->getParam('controller'),
             ucwords((string)$this->getRequest()->getParam('action'))
         );
     }
@@ -55,6 +55,7 @@ trait BaseViewTrait
     {
         $onlyViewVars = !empty($only) ? $only : array_keys($passedViewVars);
 
+        /** @var array<int|string> $nonInertiaProps */
         $nonInertiaProps = $this->getConfig('_nonInertiaProps') ?? [];
 
         /**

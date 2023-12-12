@@ -7,3 +7,5 @@ parameters:
     checkMissingIterableValueType: false
     checkGenericClassInNonGenericObjectType: false
     reportUnmatchedIgnoredErrors: true
+includes:
+    - phpstan-baseline.neon
