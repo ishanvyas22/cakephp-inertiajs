@@ -18,12 +18,24 @@ class InertiaWebViewTest extends TestCase
         parent::setUp();
 
         $request = new ServerRequest();
-        $response = new Response();
+        $request = $request
+            ->withParam('controller', '')
+            ->withParam('action', '');
+        // Set `inertia` detector to test `InertiaJsonView` class
+        $request->addDetector('inertia', function ($request) {
+            return true;
+        });
+        $request->addDetector('inertia-partial-component', function ($request) {
+            return false;
+        });
+        $request->addDetector('inertia-partial-data', function ($request) {
+            return false;
+        });
 
         $this->View = (new ViewBuilder())
             ->setClassName('Inertia\View\InertiaWebView')
             ->setOption('_nonInertiaProps', ['one', 'two', 'three'])
-            ->build($request, $response);
+            ->build($request, new Response());
     }
 
     public function testRendersDivWithIdAppAttribute()

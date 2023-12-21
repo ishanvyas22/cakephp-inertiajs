@@ -16,15 +16,25 @@ class InertiaJsonViewTest extends TestCase
     {
         parent::setUp();
 
+        /**
+         * Prepare request
+         */
         $request = new ServerRequest();
-        $response = new Response();
-
+        $request = $request
+            ->withParam('controller', 'Pages')
+            ->withParam('action', 'display');
         // Set `inertia` detector to test `InertiaJsonView` class
         $request->addDetector('inertia', function ($request) {
             return true;
         });
+        $request->addDetector('inertia-partial-component', function ($request) {
+            return false;
+        });
+        $request->addDetector('inertia-partial-data', function ($request) {
+            return false;
+        });
 
-        $this->View = new InertiaJsonView($request, $response);
+        $this->View = new InertiaJsonView($request, new Response());
     }
 
     public function testReturnsJsonResponseWithGivenData()
@@ -42,7 +52,7 @@ class InertiaJsonViewTest extends TestCase
         $this->assertArrayHasKey('props', $resultArray);
         $this->assertArrayHasKey('user', $resultArray['props']);
         $this->assertJsonStringEqualsJsonString(json_encode([
-            'component' => '/',
+            'component' => 'Pages/Display',
             'url' => 'http://localhost/',
             'props' => ['user' => $user],
         ]), $resultJson);
