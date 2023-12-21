@@ -5,6 +5,7 @@ namespace Inertia\View;
 
 use Cake\Routing\Router;
 use Closure;
+use UnexpectedValueException;
 
 trait BaseViewTrait
 {
@@ -34,14 +35,33 @@ trait BaseViewTrait
 
             unset($this->viewVars['component']);
 
-            return (string)$component;
+            return $this->convertToString($component);
         }
 
         return sprintf(
             '%s/%s',
-            (string)$this->getRequest()->getParam('controller'),
-            ucwords((string)$this->getRequest()->getParam('action'))
+            $this->convertToString($this->getRequest()->getParam('controller')),
+            ucwords($this->convertToString($this->getRequest()->getParam('action'))),
         );
+    }
+
+    /**
+     * Helper method used to ensure correct string type.
+     *
+     * @param mixed $value Value
+     * @return string
+     * @throws \UnexpectedValueException
+     */
+    protected function convertToString(mixed $value): string
+    {
+        if (is_string($value)) {
+            return $value;
+        }
+        if (is_numeric($value)) {
+            return (string)$value;
+        }
+
+        throw new UnexpectedValueException();
     }
 
     /**
