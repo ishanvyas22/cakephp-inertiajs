@@ -64,7 +64,8 @@ Now you are all set to start using your front-end components as template files. 
 
 Plugin version | Branch | CakePHP version | PHP minimum version |
 --- | --- | --- | --- |
-2.x | master | >=4.0.0 | >=7.2 |
+3.x | cake5 | >=5.0.0 | >=8.1 |
+2.x | cake4 | >=4.0.0 | >=7.2 |
 1.x | cake3 | >=3.5.0 | >=5.6 |
 
 ---
