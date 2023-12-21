@@ -2,9 +2,13 @@ name: Run PHPStan
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - 'cake5'
+      - 'cake4'
+      - 'cake3'
   pull_request:
-    branches: [ master ]
+    branches:
+      - '*'
 
 jobs:
   run-phpstan:
