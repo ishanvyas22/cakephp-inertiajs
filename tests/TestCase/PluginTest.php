@@ -10,7 +10,7 @@ use Cake\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\Middleware\RoutingMiddleware;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
-use Inertia\Plugin;
+use Inertia\InertiaPlugin;
 use TestApp\Application;
 
 class PluginTest extends TestCase
@@ -19,7 +19,7 @@ class PluginTest extends TestCase
 
     public function testBootstrap()
     {
-        $plugin = new Plugin();
+        $plugin = new InertiaPlugin();
         $app = new Application(CONFIG);
 
         $plugin->bootstrap($app);

@@ -23,7 +23,7 @@ class InertiaWebViewTest extends TestCase
         $this->View = (new ViewBuilder())
             ->setClassName('Inertia\View\InertiaWebView')
             ->setOption('_nonInertiaProps', ['one', 'two', 'three'])
-            ->build([], $request, $response);
+            ->build($request, $response);
     }
 
     public function testRendersDivWithIdAppAttribute()
@@ -66,8 +66,7 @@ class InertiaWebViewTest extends TestCase
 
         $this->assertEquals($expected, $actual);
 
-        $result = $this->View->render();
-
+        $this->View->render();
         $actual = $this->View->getVars();
 
         $expected = [

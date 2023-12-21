@@ -44,7 +44,7 @@ class InertiaMiddleware implements MiddlewareInterface
     /**
      * Set detectors in the request to use it throughout the application.
      *
-     * @param  \Cake\Http\ServerRequest $request The request.
+     * @param \Cake\Http\ServerRequest $request The request.
      * @return void
      */
     private function setupDetectors(ServerRequest $request): void

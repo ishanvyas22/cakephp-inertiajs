@@ -5,6 +5,7 @@ namespace Inertia\View;
 
 use Cake\Routing\Router;
 use Closure;
+use UnexpectedValueException;
 
 trait BaseViewTrait
 {
@@ -34,27 +35,47 @@ trait BaseViewTrait
 
             unset($this->viewVars['component']);
 
-            return $component;
+            return $this->convertToString($component);
         }
 
         return sprintf(
             '%s/%s',
-            $this->getRequest()->getParam('controller'),
-            ucwords((string)$this->getRequest()->getParam('action'))
+            $this->convertToString($this->getRequest()->getParam('controller')),
+            ucwords($this->convertToString($this->getRequest()->getParam('action'))),
         );
+    }
+
+    /**
+     * Helper method used to ensure correct string type.
+     *
+     * @param mixed $value Value
+     * @return string
+     * @throws \UnexpectedValueException
+     */
+    protected function convertToString(mixed $value): string
+    {
+        if (is_string($value)) {
+            return $value;
+        }
+        if (is_numeric($value)) {
+            return (string)$value;
+        }
+
+        throw new UnexpectedValueException();
     }
 
     /**
      * Returns an array of Inertia var names and sets Non Inertia Vars for use by View
      *
-     * @param mixed $only Partial Data
-     * @param mixed $passedViewVars Associative array of all passed ViewVars and their values
+     * @param array $only Partial Data
+     * @param array $passedViewVars Associative array of all passed ViewVars and their values
      * @return array
      */
-    private function filterViewVars($only, $passedViewVars): array
+    private function filterViewVars(array $only, array $passedViewVars): array
     {
         $onlyViewVars = !empty($only) ? $only : array_keys($passedViewVars);
 
+        /** @var array<int|string> $nonInertiaProps */
         $nonInertiaProps = $this->getConfig('_nonInertiaProps') ?? [];
 
         /**

@@ -56,7 +56,6 @@ class InertiaJsonViewTest extends TestCase
         $this->View->set(compact('component', 'user'));
 
         $resultJson = json_encode(json_decode($this->View->render()));
-        $resultArray = json_decode($resultJson, true);
 
         $this->assertJsonStringEqualsJsonString(json_encode([
             'component' => 'Users/Index',
