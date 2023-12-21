@@ -3,7 +3,7 @@
 [![Latest Stable Version](https://poser.pugx.org/ishanvyas22/cakephp-inertiajs/v)](//packagist.org/packages/ishanvyas22/cakephp-inertiajs)
 [![Total Downloads](https://poser.pugx.org/ishanvyas22/cakephp-inertiajs/downloads)](//packagist.org/packages/ishanvyas22/cakephp-inertiajs)
 [![License](https://poser.pugx.org/ishanvyas22/cakephp-inertiajs/license)](//packagist.org/packages/ishanvyas22/cakephp-inertiajs)
-[![CakePHP](https://img.shields.io/badge/cakephp-%5E4.1.0-red?logo=cakephp)](https://book.cakephp.org/4/en/index.html)
+[![CakePHP](https://img.shields.io/badge/cakephp-%5E5.0.0-red?logo=cakephp)](https://book.cakephp.org/5/en/index.html)
 ![Tests](https://github.com/ishanvyas22/cakephp-inertiajs/workflows/Run%20tests/badge.svg?branch=master)
 ![PHPStan](https://github.com/ishanvyas22/cakephp-inertiajs/workflows/Run%20PHPStan/badge.svg)
 ![Coding Style Check](https://github.com/ishanvyas22/cakephp-inertiajs/workflows/Check%20Coding%20Style/badge.svg)
